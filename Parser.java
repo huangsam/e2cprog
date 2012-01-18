@@ -30,8 +30,10 @@ public class Parser {
         this.scanner = scanner;
         scan();
         program();
-        if( tok.kind != TK.EOF )
-            parse_error("junk after logical end of program");
+        if( tok.kind != TK.EOF ) {
+	    //System.out.println(tok.kind);
+            parse_error("junk after logical end of program; STR,TK=" + tok.string + ',' + tok.kind);
+	}
     }
 
     // for code generation
@@ -159,9 +161,16 @@ public class Parser {
 
     private void print(){
         mustbe(TK.PRINT);
-        gcprint("printf(\"%d\\n\", ");
-        expression();
-        gcprint(");");
+	if(is(TK.DQUOTE)){
+	    gcprint("printf(");
+	    gcprint(tok.string + "\\n\"");
+	    scan();
+	}
+	else{
+          gcprint("printf(\"%d\\n\", ");
+	  expression();
+	}
+	gcprint(");");
     }
 
     private void ifproc(){
@@ -235,6 +244,9 @@ public class Parser {
         mustbe(TK.END);
         iv.setIsIV(false); // mark Entry as no longer IV
     }
+    
+//     private void string(){
+// 	mustbe(TK.DQUOTE); }
 
     private void expression(){
         simple();

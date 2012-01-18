@@ -32,7 +32,7 @@ public class TK {
     public static final TK TO      = new TK("TK.TO");      // to
     public static final TK DOWNTO  = new TK("TK.DOWNTO");  // downto
 
-  
+    public static final TK DQUOTE  = new TK("TK.DQUOTE");  // "
     public static final TK COMMA  = new TK("TK.COMMA");    // ,
 
     public static final TK ASSIGN = new TK("TK.ASSIGN");   // :=

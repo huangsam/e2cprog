@@ -84,10 +84,16 @@ public class Scan {
                 /* number. */
                 return new Token(TK.NUM, buildNUM(), linenumber);
             }
+            else if (c == '"') {
+		/* string. */
+		return new Token(TK.DQUOTE, buildSTR(), linenumber);
+	    }
             else {
                 switch( c ) {
                     case ',':
                         return ccase1(',',TK.COMMA);
+// 		    case '"':
+//                         return ccase1('"',TK.DQUOTE);
                     case '(':
                         return ccase1('(',TK.LPAREN);
                     case ')':
@@ -223,6 +229,37 @@ public class Scan {
         if( myisdigit((char) c) && k == MAXLEN_ID ) {
             do { c = getchar(); } while(myisdigit((char) c));
             System.err.println("scan: number too long -- truncated to "
+                               + str);
+        }
+        return str;
+    }
+    
+    // build up an STR token
+    // (could use StringBuffer to make this more efficient...)
+    private String buildSTR() {
+        int k = 0;
+        String str = "";
+        do {
+            str += (char) c;
+            k++;
+            c = getchar();
+        } while( c != '\"' && k < MAXLEN_ID + 1 ); // until right-hand DQUOTE
+	//if (myisdigit((char) c)) str += (char) c; // AD-HOC!
+	//str += (char) c;
+	//k++;
+	//System.err.println("char1: "+(char)c);
+	c = getchar(); // take away DQUOTE
+	//System.err.println("char2: "+(char)c);
+	//c = getchar(); // take away newline
+	//System.err.println("char3: "+(char)c);
+        putback = true;
+        if( /*myisalpha((char) c) && */ k == MAXLEN_ID + 1 ) {
+	    if ( c != '\"' ) {
+		System.err.println("scan: string missing closing \"; quitting near ");
+		System.exit(1);
+	    }
+            do { c = getchar(); } while(myisalpha((char) c));
+            System.err.println("scan: string too long -- truncated to "
                                + str);
         }
         return str;
