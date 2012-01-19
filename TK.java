@@ -29,10 +29,12 @@ public class TK {
     public static final TK WHILE   = new TK("TK.WHILE");   // while
     public static final TK DO      = new TK("TK.DO");      // do
     public static final TK FOR     = new TK("TK.FOR");     // for
+    public static final TK REPEAT  = new TK("TK.REPEAT");  // repeat - part 12
+    public static final TK UNTIL   = new TK("TK.UNTIL");   // until - part 12
     public static final TK TO      = new TK("TK.TO");      // to
     public static final TK DOWNTO  = new TK("TK.DOWNTO");  // downto
 
-    public static final TK DQUOTE  = new TK("TK.DQUOTE");  // "
+    public static final TK DQUOTE  = new TK("TK.DQUOTE");  // " - part 11
     public static final TK COMMA  = new TK("TK.COMMA");    // ,
 
     public static final TK ASSIGN = new TK("TK.ASSIGN");   // :=

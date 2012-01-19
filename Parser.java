@@ -10,12 +10,13 @@ public class Parser {
     TK f_declaration[] = {TK.VAR, TK.CONST, TK.none};
     TK f_var_decl[] = {TK.VAR, TK.none};
     TK f_const_decl[] = {TK.CONST, TK.none};
-    TK f_statement[] = {TK.ID, TK.PRINT, TK.IF, TK.WHILE, TK.FOR, TK.none};
+    TK f_statement[] = {TK.ID, TK.PRINT, TK.IF, TK.WHILE, TK.FOR, TK.REPEAT, TK.none};
     TK f_print[] = {TK.PRINT, TK.none};
     TK f_assignment[] = {TK.ID, TK.none};
     TK f_if[] = {TK.IF, TK.none};
     TK f_while[] = {TK.WHILE, TK.none};
     TK f_for[] = {TK.FOR, TK.none};
+    TK f_repeat[] = {TK.REPEAT, TK.UNTIL, TK.none};
     TK f_expression[] = {TK.ID, TK.NUM, TK.LPAREN, TK.none};
 
     // tok is global to all these parsing methods;
@@ -141,6 +142,8 @@ public class Parser {
             whileproc();
         else if( first(f_for) )
             forproc();
+	else if( first(f_repeat) )
+	    repeatproc();
         else
             parse_error("oops -- statement bad first");
     }
@@ -244,13 +247,39 @@ public class Parser {
         mustbe(TK.END);
         iv.setIsIV(false); // mark Entry as no longer IV
     }
-
+    
+    private void repeatproc(){
+	mustbe(TK.REPEAT);
+	gcprint("do"); // the '{' will be generated
+	block();
+        mustbe(TK.UNTIL);
+	gcprint("while("); // the '}' will be generated
+	expression2(); // part 12
+	gcprint(");");
+    }
+    
     private void expression(){
         simple();
         while( is(TK.EQ) || is(TK.LT) || is(TK.GT) ||
                is(TK.NE) || is(TK.LE) || is(TK.GE)) {
             if( is(TK.EQ) ) gcprint("==");
             else if( is(TK.NE) ) gcprint("!=");
+            else gcprint(tok.string);
+            scan();
+            simple();
+        }
+    }
+    
+    private void expression2(){
+        simple();
+        while( is(TK.EQ) || is(TK.LT) || is(TK.GT) ||
+               is(TK.NE) || is(TK.LE) || is(TK.GE)) {
+            if( is(TK.EQ) ) gcprint("!=");
+            else if( is(TK.NE) ) gcprint("==");
+      	    else if( is(TK.GT) ) gcprint("<="); // part 12
+	    else if( is(TK.GE) ) gcprint("<"); // part 12
+	    else if( is(TK.LT) ) gcprint(">="); // part 12
+	    else if( is(TK.LE) ) gcprint(">"); // part 12
             else gcprint(tok.string);
             scan();
             simple();

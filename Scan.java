@@ -287,6 +287,9 @@ public class Scan {
         if (str.equals("while"))     return TK.WHILE;
         if (str.equals("do"))        return TK.DO;
         if (str.equals("for"))       return TK.FOR;
+        //System.out.println(str);
+	if (str.equals("repeat"))    return TK.REPEAT; // part 12
+	if (str.equals("until"))     return TK.UNTIL; // part 12
         if (str.equals("to"))        return TK.TO;
         if (str.equals("downto"))    return TK.DOWNTO;
  
