@@ -32,7 +32,7 @@ public class Parser {
         program();
         if( tok.kind != TK.EOF ) {
 	    //System.out.println(tok.kind);
-            parse_error("junk after logical end of program; STR,TK=" + tok.string + ',' + tok.kind);
+            parse_error("junk after logical end of program" /*; STR,TK=" + tok.string + ',' + tok.kind */);
 	}
     }
 
@@ -163,7 +163,7 @@ public class Parser {
         mustbe(TK.PRINT);
 	if(is(TK.DQUOTE)){
 	    gcprint("printf(");
-	    gcprint(tok.string + "\\n\"");
+	    gcprint("\"%s\\n\", \"" + tok.string + '"'/*+ "\\n\""*/);
 	    scan();
 	}
 	else{
@@ -244,9 +244,6 @@ public class Parser {
         mustbe(TK.END);
         iv.setIsIV(false); // mark Entry as no longer IV
     }
-    
-//     private void string(){
-// 	mustbe(TK.DQUOTE); }
 
     private void expression(){
         simple();
@@ -259,7 +256,8 @@ public class Parser {
             simple();
         }
     }
-
+ // line1: printf(" lalalala "
+ // line2: "
     private void simple(){
         term();
         while( is(TK.PLUS) || is(TK.MINUS) ) {
