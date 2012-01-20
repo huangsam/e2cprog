@@ -27,14 +27,15 @@ public class Parser {
     }
 
     private Scan scanner;
+    
     Parser(Scan scanner) {
         this.scanner = scanner;
         scan();
         program();
         if( tok.kind != TK.EOF ) {
-	    //System.out.println(tok.kind);
+			//System.out.println(tok.kind);
             parse_error("junk after logical end of program" /*; STR,TK=" + tok.string + ',' + tok.kind */);
-	}
+		}
     }
 
     // for code generation
