@@ -70,11 +70,12 @@ public class Scan {
 //             'hello' is returned from the input 'hello*45'?
 
             if( putback) {
-                putback = false;
+                putback = false;  // use last char
             }
             else {
-                c = getchar();
+                c = getchar();    // get new char
             }
+            
             if ( myisalpha((char) c) ) {
                 /* identifier. */
                 String id = buildID();
@@ -85,9 +86,9 @@ public class Scan {
                 return new Token(TK.NUM, buildNUM(), linenumber);
             }
              else if (c == '"') {
-		/* string. */
-		return new Token(TK.DQUOTE, buildSTR(), linenumber);
-	    }
+				/* string. */
+				return new Token(TK.DQUOTE, buildSTR(), linenumber);
+			}
             else {
                 switch( c ) {
                     case ',':
@@ -98,6 +99,12 @@ public class Scan {
                         return ccase1('(',TK.LPAREN);
                     case ')':
                         return ccase1(')',TK.RPAREN);
+					// for part 13
+                    case '[':
+                        return ccase1('[',TK.LBRACKET);
+                    case ']':
+                        return ccase1(']',TK.LBRACKET);
+					// end for part 13
                     case '*':
                         return ccase1('*',TK.TIMES);
                     case '=':
@@ -165,6 +172,8 @@ public class Scan {
     }
 
     private Token ccase1or2(char c1, char c2, TK r1, TK r2) {
+		// if the next char is c2, then TK type is r2, 
+		// else putback the char and the current one is of type r1.
         c = getchar();
         if (c == c2) {
             return new Token(
@@ -179,6 +188,7 @@ public class Scan {
     }
 
     private Token ccase2(char c1, char c2, TK r) {
+		// the next char must be c2 otherwise it's an error.
         c = getchar();
         if (c == c2) {
             return new Token(

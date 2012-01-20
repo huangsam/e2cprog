@@ -35,7 +35,9 @@ public class TK {
     public static final TK DOWNTO  = new TK("TK.DOWNTO");  // downto
 
     public static final TK DQUOTE  = new TK("TK.DQUOTE");  // " - part 11
-    public static final TK COMMA  = new TK("TK.COMMA");    // ,
+    public static final TK COMMA   = new TK("TK.COMMA");   // ,
+    public static final TK LBRACKET= new TK("TK.LBRACKET");// [ - part 13
+    public static final TK rBRACKET= new TK("TK.RBRACKET");// ] - part 13
 
     public static final TK ASSIGN = new TK("TK.ASSIGN");   // :=
     public static final TK LPAREN = new TK("TK.LPAREN");   // (
