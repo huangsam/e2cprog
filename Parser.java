@@ -39,6 +39,7 @@ public class Parser {
 
     // for code generation
     private static final int initialValueEVariable = 8888;
+    private static final int initialArrayElemValue = 4444; // - for part 13
 
     // print something in the generated code
     private void gcprint(String str) {
