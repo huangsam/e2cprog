@@ -84,10 +84,33 @@ public class Parser {
 
     private void var_decl() {
         mustbe(TK.VAR);
-        var_decl_id();
+    	// here: add if statement to see if the next tok is a TK.LBRACKET 
+        // if so call a new function that declares arrays. 
+    	// if so handle the declaration of a new array with all elements initialized to initialArrayElemValue
+        if (is(TK.LBRACKET)) {
+        	var_array_decl_id();
+        } else {
+            var_decl_id();
+        }
         while( is(TK.COMMA) ) {
             scan();
             var_decl_id();
+        }
+    }
+    
+    private void var_array_decl_id() {
+    	if( is(TK.LBRACKET) ) {
+    		// call function to parse the array bound arguments 
+    		// check that the bounds are legal (needs to be a non negative number of elements)
+//    		if (symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)) {
+//                gcprint("int ");
+//                gcprintid(tok.string);
+//                gcprint("="+initialValueEVariable+";");
+//            }
+//            scan();
+    	}
+    	else {
+            parse_error("expected id in var declaration, got " + tok);
         }
     }
 
