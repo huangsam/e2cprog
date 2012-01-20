@@ -124,7 +124,7 @@ public class Scan {
                         return ccase1or2('>','=',TK.GT,TK.GE);
 
                     case ':':
-                        return ccase2(':','=',TK.ASSIGN);
+                        return ccase1or2(':','=',TK.COLON,TK.ASSIGN);// part 13
 
                     case EOF:
                         got_eof = true;

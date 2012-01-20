@@ -5,12 +5,14 @@ class Entry {
     private int lineNumber;     // line on which declared
     private TK varOrConst;      // variable or const?
     private boolean isIV ;      // is presently index variable?
+    private boolean isArray;	// is the variable an array?
 
     public Entry(String name, int lineNumber, TK varOrConst) {
         this.name = name;
         this.lineNumber = lineNumber;
         this.varOrConst = varOrConst;
         this.isIV = false;
+	this.isArray = false;
     }
     String getName() {
         return name;
@@ -30,6 +32,13 @@ class Entry {
     void setIsIV(boolean is) {
         isIV = is;
     }
+    void setIsArray(boolean is) { // part 13
+	isArray = is;      
+    }
+    boolean getIsArray() {	// part 13
+	return isArray;      
+    }
+    
     public String whatAreYou() {
         return  isVar()?"variable"
                :isConst()?"constant"
