@@ -1,0 +1,7 @@
+git pull 
+cp -f *.java ../Given/part13/
+cd ../Given/part13
+make
+runall > log.txt
+more +150 log.txt
+
