@@ -55,31 +55,6 @@ public class Parser {
 
     private void program() {
         gcprint("#include <stdio.h>");
-        // part 14
-        // include a bc() function for the array bound checking (as explained in the assignment)
-//        int bc(int arrayName, int index) {
-//        	int curSize = sizeOf(arrayName);
-//        	if (index < 0 || index > curSize) {
-//        		fprintf(stderr, "Index out of bounds");
-//        		exit(1);
-//        	}
-//        	else {
-//        		return 1;
-//        	}
-//        }
-        // I have a script that from the above text produces the one below in case you need it too.
-        gcprint(" int bc(int *arrayName, int index) {\n 		");
-        gcprint("     int curSize = sizeof(arrayName);\n 		");
-        gcprint("     if(index < 0 || index >= curSize) {\n 		");
-        gcprint("     fprintf(stderr, \"%s\\n\", \"" + "index out of bounds" + '"'/*+ "\\n\""*/); //  \"index out of bounds\n\") ;\n 		");
-        gcprint("\"%s\\n\", \"" + tok.string + '"' + ");\n 		");
-        gcprint("     exit(1);\n 		");
-        gcprint("     }\n 		");
-        gcprint("     else {\n 		");
-        gcprint("         return 1;\n 		");
-        gcprint("     }\n 		");
-        gcprint(" }      \n 		");
-        // end part 14
         gcprint("main() ");
         block();
     }
@@ -131,71 +106,66 @@ public class Parser {
         }
     }
    
-    private void var_decl_decl_id() {
-    	if( is(TK.ID) ) {
-    		if (symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)) 
-    		{
-    			gcprint("int ");	
-    			String name = tok.string;
-    			scan();
-    			if( is(TK.LBRACKET) ) 
-    			{
-    				scan();
-    				String negative = "";
-    				if( is(TK.MINUS) ) {
-    					negative += "-";
-    					scan();
-    				}
-    				Token tmptok = tok;
-    				mustbe(TK.NUM);
-    				int LB = Integer.parseInt(negative + tmptok.string);
-    				mustbe(TK.COLON);
-    				negative = "";
-    				if( is(TK.MINUS) ) {
-    					negative += "-";
-    					scan();
-    				}
-    				tmptok = tok;
-    				mustbe(TK.NUM);
-    				int UB = Integer.parseInt(negative + tmptok.string);
-    				int size = UB - LB;
-    				if (size <= 0) {
-    					parse_error("The size of the array is negative or 0:" + size );
-    				}
-    				gcprintid(name+ "[" + size + "];");
-    				arrayInit(name, size);
-    				scan();
-    			} else {
-    				gcprintid(name);
-    				gcprint("="+initialValueEVariable+";");
-    			}
-    		} else {
-    			scan();
-    		}
-    	} else {
-    		parse_error("expected id in var declaration, got " + tok);
-    	}
-    }
-    //if (is(TK.LBRACKET)) {
-    // 		    //gcprint("[");
-    // 		    bound();
-    // 		    ub = Integer.ParseInt(tok.string);
-    // 		    mustbe(TK.COLON);
-    // 		    //gcprint(":");
-    // 		    bound();
-    // 		    lb = Integer.ParseInt(tok.string);
-    // 		    //mustbe(TK.RBRACKET);
-    // 		    //gcprint("]");
-    // 		}
-    //gcprint(initialValueEVariable);
-    //gcprint(
+   private void var_decl_decl_id() {
+	if( is(TK.ID) ) {
+	    if (symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)) {
+	      int ub, lb;
+	      gcprint("int ");	
+	      String arrayName = tok.string;
+	      scan();
+	      if( is(TK.LBRACKET) ) {
+		scan();
+		String negative = "";
+		if( is(TK.MINUS) ) {
+		  negative += "-";
+		  scan();
+		}
+		Token temptok = tok;
+		mustbe(TK.NUM);
+		lb = Integer.parseInt(negative + temptok.string);
+		mustbe(TK.COLON);
+		negative = "";
+		if( is(TK.MINUS) ) {
+		  negative += "-";
+		  scan();
+		}
+		temptok = tok;
+		mustbe(TK.NUM);
+		ub = Integer.parseInt(negative + temptok.string);
+		int arraySize = ub - lb + 1;
+		if ( arraySize <= 0 ) {
+		    System.err.println("declared size of " + arrayName + " is <= 0 ("
+		    + arraySize + ") on line " + tok.lineNumber );
+		    System.exit(1);		  
+		}
+		arrayInit(arrayName, arraySize, lb);
+		scan();
+	      } else {
+		gcprintid(arrayName);
+		gcprint("=" + initialValueEVariable + ";");
+		}
+	    } else {
+		scan();
+		if ( is(TK.LBRACKET) ){
+		    scan();
+		    scan();
+		    scan();
+		    scan();
+		    scan();
+		}
+	      }
+	} else {
+      parse_error("expected id in var declaration, got " + tok);
+	  }
+  }
 
-    private void arrayInit(String name, int size) {
-    	gcprint("{\nint i;");
-    	gcprint("for(i=0; i < " +size+ "; i++) {");
-    	gcprint("x_"+name+"[i]" +"="+initialArrayElemValue+";");
-    	gcprint("}\n}");
-    	symtab.search(name).setIsArray(true);
+    private void arrayInit(String arrayName, int arraySize, int lb) {
+	  String initialArrayValues = "";
+	  for (int i = 0; i <= arraySize; i++ ) {
+	      initialArrayValues += initialArrayElemValue + ", ";	   
+	  }
+	  gcprintid(arrayName + "[] = {" + lb + ", " + arraySize + ", " + initialArrayValues + "};");
+	  symtab.search(arrayName).setIsArray(true);
     }   
 
     private void const_decl() {
@@ -244,9 +214,15 @@ public class Parser {
     }
 
     private void assignment(){
-        if( is(TK.ID) ) {
+	if( is(TK.ID) ) {
+	    Token temptok = tok;
             lvalue_id(tok.string, tok.lineNumber);
             scan();
+	    if ( is(TK.LBRACKET) ) {
+		System.err.println("subscripting non-array " + temptok.string 
+		+ " on line " + temptok.lineNumber );
+		System.exit(1);	      
+	    }	    
         }
         else {
             parse_error("missing id on left-hand-side of assignment");
@@ -310,10 +286,11 @@ public class Parser {
         String id = tok.string;
         Entry iv = null; // index variable in symtab
         if( is(TK.ID) ) {
-	    if( symtab.search(id).getIsArray() ) {
-	      System.err.println("array on left-hand-side of assignment (used as index variable) "
-	      + id + " on line " + tok.lineNumber );
-	      System.exit(1);
+	    if( symtab.search(id) != null && symtab.search(id).getIsArray() )
+	    {
+		    System.err.println("array on left-hand-side of assignment (used as index variable) "
+			+ id + " on line " + tok.lineNumber );
+		    System.exit(1);
 	    }
             iv = lvalue_id(tok.string, tok.lineNumber);
             iv.setIsIV(true); // mark Entry as IV
@@ -413,8 +390,13 @@ public class Parser {
             gcprint(")");
         }
         else if( is(TK.ID) ) {
+	    String ID = tok.string;
             rvalue_id(tok.string, tok.lineNumber);
             scan();
+	    if ( is(TK.LBRACKET) ) {
+		System.err.println("subscripting non-array " + ID + " on line " + tok.lineNumber );
+		System.exit(1);	      
+	    }
         }
         else if( is(TK.NUM) ) {
             gcprint(tok.string);
@@ -443,15 +425,15 @@ public class Parser {
         }
         if( e.getIsArray() ) {
 	    scan();
-	  if( !is(TK.LBRACKET) ) {
-	    System.err.println("missing subscript for array " + id + " on line " + lno );
-	    System.exit(1);
-	  }
-	  scan();
-	  Token tmptok = tok;
-	  mustbe(TK.NUM);
-	  gcprintid(id+"["+tmptok.string+"]");
-	  return e;
+	    if( !is(TK.LBRACKET) ) {
+		System.err.println("missing subscript for array " + id + " on line " + lno );
+		System.exit(1);
+	    }
+	    scan();
+	    gcprintid(id+"[");
+	    expression();
+	    gcprint("-x_"+id+"[0]+2]");
+	    return e;
 	}
 	gcprintid(id);
         return e;
@@ -466,15 +448,15 @@ public class Parser {
         }
         if( e.getIsArray() ) {
 	    scan();
-	   if( !is(TK.LBRACKET) ) {
+	    if( !is(TK.LBRACKET) ) {
 	      System.err.println("missing subscript for array " + id + " on line " + lno );
 	      System.exit(1);
-	   }
-	  scan();
-	  Token tmptok = tok;
-	  mustbe(TK.NUM);
-	  gcprintid(id+"["+tmptok.string+"]");
-	  return;
+	    }
+	    scan();
+	    gcprintid(id+"[");
+	    expression();
+	    gcprint("-x_"+id+"[0]+2]");
+	    return;
 	}
         gcprintid(id);
     }

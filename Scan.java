@@ -103,7 +103,7 @@ public class Scan {
                     case '[':
                         return ccase1('[',TK.LBRACKET);
                     case ']':
-                        return ccase1(']',TK.LBRACKET);
+                        return ccase1(']',TK.RBRACKET);
 					// end for part 13
                     case '*':
                         return ccase1('*',TK.TIMES);
@@ -187,20 +187,25 @@ public class Scan {
         }
     }
 
-    private Token ccase2(char c1, char c2, TK r) {
+    private Token ccase2(char c1, char c2, TK r1, TK r2) {
 		// the next char must be c2 otherwise it's an error.
         c = getchar();
         if (c == c2) {
             return new Token(
-                     r, String.valueOf(c1)+String.valueOf(c2),
+                     r2, String.valueOf(c1)+String.valueOf(c2),
                      linenumber);
         }
-        else {
+	else if( myisdigit( (char) c ) ){
+	    String number = buildNUM();
+	    putback = false;
+	    return new Token( r1, number, linenumber );
+	}
+	else {
             System.err.println("scan: got got " + c1 +
                                " missing " + c2 +
                                " (got ASCII " + c + ")");
             return new Token(TK.ERROR, "bad ccase2", linenumber);
-        }
+	}
     }
 
     // rather than duplicating code, as done below,
@@ -297,7 +302,6 @@ public class Scan {
         if (str.equals("while"))     return TK.WHILE;
         if (str.equals("do"))        return TK.DO;
         if (str.equals("for"))       return TK.FOR;
-        //System.out.println(str);
 	if (str.equals("repeat"))    return TK.REPEAT; // part 12
 	if (str.equals("until"))     return TK.UNTIL; // part 12
         if (str.equals("to"))        return TK.TO;

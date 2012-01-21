@@ -12,7 +12,7 @@ class Entry {
         this.lineNumber = lineNumber;
         this.varOrConst = varOrConst;
         this.isIV = false;
-        this.isArray = false;
+	this.isArray = false;
     }
     String getName() {
         return name;
@@ -40,7 +40,11 @@ class Entry {
     }
     
     public String whatAreYou() {
-        return  isVar()?"variable"
+// 	if (isArray) {
+// 	    return "array";
+// 	}
+        return  getIsArray()?"array"
+	       :isVar()?"variable"
                :isConst()?"constant"
                :"OOPS Entry whatAreYou()";
     }
