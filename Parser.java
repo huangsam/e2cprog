@@ -55,6 +55,31 @@ public class Parser {
 
     private void program() {
         gcprint("#include <stdio.h>");
+        // part 14
+        // include a bc() function for the array bound checking (as explained in the assignment)
+//        int bc(int arrayName, int index) {
+//        	int curSize = sizeOf(arrayName);
+//        	if (index < 0 || index > curSize) {
+//        		fprintf(stderr, "Index out of bounds");
+//        		exit(1);
+//        	}
+//        	else {
+//        		return 1;
+//        	}
+//        }
+        // I have a script that from the above text produces the one below in case you need it too.
+        gcprint(" int bc(int arrayName, int index) {\n ");
+        gcprint("         \tint curSize = sizeOf(arrayName);\n ");
+        gcprint("         \tif (index < 0 || index > curSize) {\n ");
+        gcprint("         \t\tfprintf(stderr, \"Index out of bounds\");\n ");
+        gcprint("         \t\texit(1);\n ");
+        gcprint("         \t}\n ");
+        gcprint("         \telse {\n ");
+        gcprint("         \t\treturn 1;\n ");
+        gcprint("         \t}\n ");
+        gcprint("         }\n ");
+        gcprint("        \n ");
+        // end part 14
         gcprint("main() ");
         block();
     }
@@ -106,66 +131,71 @@ public class Parser {
         }
     }
    
-   private void var_decl_decl_id() {
-	if( is(TK.ID) ) {
-	    if (symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)) {
-	      gcprint("int ");	
-	      String name = tok.string;
-	      scan();
-	      if( is(TK.LBRACKET) ) {
-		scan();
-		String negative = "";
-		if( is(TK.MINUS) ) {
-		  negative += "-";
-		  scan();
-		}
-		Token tmptok = tok;
-		mustbe(TK.NUM);
-		int LB = Integer.parseInt(negative + tmptok.string);
-		mustbe(TK.COLON);
-		negative = "";
-		if( is(TK.MINUS) ) {
-		  negative += "-";
-		  scan();
-		}
-		tmptok = tok;
-		mustbe(TK.NUM);
-		int UB = Integer.parseInt(negative + tmptok.string);
-		int size = UB - LB;
-		gcprintid(name+ "[" + size + "];");
-		arrayInit(name, size);
-		scan();
-	      } else {
-		gcprintid(name);
-		gcprint("="+initialValueEVariable+";");
-		}
-	    } else {
-		scan();
-	      }
-	} else {
-      parse_error("expected id in var declaration, got " + tok);
-	  }
-  }
-//if (is(TK.LBRACKET)) {
-// 		    //gcprint("[");
-// 		    bound();
-// 		    ub = Integer.ParseInt(tok.string);
-// 		    mustbe(TK.COLON);
-// 		    //gcprint(":");
-// 		    bound();
-// 		    lb = Integer.ParseInt(tok.string);
-// 		    //mustbe(TK.RBRACKET);
-// 		    //gcprint("]");
-// 		}
-		//gcprint(initialValueEVariable);
-		//gcprint(
+    private void var_decl_decl_id() {
+    	if( is(TK.ID) ) {
+    		if (symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)) 
+    		{
+    			gcprint("int ");	
+    			String name = tok.string;
+    			scan();
+    			if( is(TK.LBRACKET) ) 
+    			{
+    				scan();
+    				String negative = "";
+    				if( is(TK.MINUS) ) {
+    					negative += "-";
+    					scan();
+    				}
+    				Token tmptok = tok;
+    				mustbe(TK.NUM);
+    				int LB = Integer.parseInt(negative + tmptok.string);
+    				mustbe(TK.COLON);
+    				negative = "";
+    				if( is(TK.MINUS) ) {
+    					negative += "-";
+    					scan();
+    				}
+    				tmptok = tok;
+    				mustbe(TK.NUM);
+    				int UB = Integer.parseInt(negative + tmptok.string);
+    				int size = UB - LB;
+    				if (size <= 0) {
+    					parse_error("The size of the array is negative or 0:" + size );
+    				}
+    				gcprintid(name+ "[" + size + "];");
+    				arrayInit(name, size);
+    				scan();
+    			} else {
+    				gcprintid(name);
+    				gcprint("="+initialValueEVariable+";");
+    			}
+    		} else {
+    			scan();
+    		}
+    	} else {
+    		parse_error("expected id in var declaration, got " + tok);
+    	}
+    }
+    //if (is(TK.LBRACKET)) {
+    // 		    //gcprint("[");
+    // 		    bound();
+    // 		    ub = Integer.ParseInt(tok.string);
+    // 		    mustbe(TK.COLON);
+    // 		    //gcprint(":");
+    // 		    bound();
+    // 		    lb = Integer.ParseInt(tok.string);
+    // 		    //mustbe(TK.RBRACKET);
+    // 		    //gcprint("]");
+    // 		}
+    //gcprint(initialValueEVariable);
+    //gcprint(
 
     private void arrayInit(String name, int size) {
-      gcprint("{\nint i;");
-      gcprint("for(i=0; i < " +size+ "; i++) {");
-      gcprint("x_"+name+"[i]" +"="+initialArrayElemValue+";");
-      gcprint("}\n}");
-      symtab.search(name).setIsArray(true);
+    	gcprint("{\nint i;");
+    	gcprint("for(i=0; i < " +size+ "; i++) {");
+    	gcprint("x_"+name+"[i]" +"="+initialArrayElemValue+";");
+    	gcprint("}\n}");
+    	symtab.search(name).setIsArray(true);
     }   
 
     private void const_decl() {

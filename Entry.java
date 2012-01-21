@@ -12,7 +12,7 @@ class Entry {
         this.lineNumber = lineNumber;
         this.varOrConst = varOrConst;
         this.isIV = false;
-	this.isArray = false;
+        this.isArray = false;
     }
     String getName() {
         return name;
