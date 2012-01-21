@@ -68,17 +68,17 @@ public class Parser {
 //        	}
 //        }
         // I have a script that from the above text produces the one below in case you need it too.
-        gcprint(" int bc(int arrayName, int index) {\n ");
-        gcprint("         \tint curSize = sizeOf(arrayName);\n ");
-        gcprint("         \tif (index < 0 || index > curSize) {\n ");
-        gcprint("         \t\tfprintf(stderr, \"Index out of bounds\");\n ");
-        gcprint("         \t\texit(1);\n ");
-        gcprint("         \t}\n ");
-        gcprint("         \telse {\n ");
-        gcprint("         \t\treturn 1;\n ");
-        gcprint("         \t}\n ");
-        gcprint("         }\n ");
-        gcprint("        \n ");
+        gcprint(" int bc(int *arrayName, int index) {\n ");
+        gcprint(" \tint curSize = sizeof(arrayName);\n ");
+        gcprint(" \tif(index < 0 || index >= curSize) {\n ");
+        gcprint(" \tfprintf(stderr, \"index out of bounds\\n ");
+        gcprint(" \") ;\n ");
+        gcprint(" \texit(1);\n ");
+        gcprint(" \t}\n ");
+        gcprint(" \telse {\n ");
+        gcprint(" \t\treturn 1;\n ");
+        gcprint(" \t}\n ");
+        gcprint(" }\n ");
         // end part 14
         gcprint("main() ");
         block();
