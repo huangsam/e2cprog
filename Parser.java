@@ -72,7 +72,7 @@ public class Parser {
         gcprint("     int curSize = sizeof(arrayName);\n 		");
         gcprint("     if(index < 0 || index >= curSize) {\n 		");
         gcprint("     fprintf(stderr, \"%s\\n\", \"" + "index out of bounds" + '"'/*+ "\\n\""*/); //  \"index out of bounds\n\") ;\n 		");
-        gcprint("\"%s\\n\", \"" + tok.string + '"'/*+ "\\n\""*/);
+        gcprint("\"%s\\n\", \"" + tok.string + '"' + ");\n 		");
         gcprint("     exit(1);\n 		");
         gcprint("     }\n 		");
         gcprint("     else {\n 		");
