@@ -61,7 +61,33 @@ public class Parser {
 	}
 
 	private void program() {
+		// Notes for our toy converter
+		// array[0] ::= lb
+		// array[1] ::= size of array
+		// array[2:(size+2-1)] ::= int elements
+		// E's ub := array[1] + array[0] - 1
 		gcprint("#include <stdio.h>");
+		gcprint("#include <stdlib.h>\n");
+		/* bc() function */
+		gcprint("int bc(char *arrayName, int *array, int index, int lno) {");
+		gcprint("int curSize = array[1];");
+		gcprint("int ub = array[1] + array[0] - 1;");
+		gcprint("if(index < 0 || index > ub) {");
+		gcprint("fprintf(stderr,\"subscript (%d) out of bounds for "
+				+ "array %s[%d:%d] on line %d\",");
+		gcprint("index,");
+		gcprint("arrayName,");
+		gcprint("array[0],");
+		gcprint("ub,");
+		gcprint("lno");
+		gcprint(");");
+		gcprint("exit(1);");
+		gcprint("}");
+		gcprint("else {");
+		gcprint("return 1;");
+		gcprint("}");
+		gcprint("}\n");
+
 		gcprint("main() ");
 		block();
 	}
@@ -160,10 +186,11 @@ public class Parser {
 
 	private void arrayInit(String arrayName, int arraySize, int lb) {
 		String initialArrayValues = "";
-		for (int i = 0; i <= arraySize; i++) {
-			initialArrayValues += initialArrayElemValue + ", ";
+		for (int i = 0; i < arraySize; i++) {
+			// initialArrayValues += initialArrayElemValue + ", ";
+			initialArrayValues += ", " + initialArrayElemValue;
 		}
-		gcprintid(arrayName + "[] = {" + lb + ", " + arraySize + ", "
+		gcprintid(arrayName + "[] = {" + lb + ", " + arraySize
 				+ initialArrayValues + "};");
 		symtab.search(arrayName).setIsArray(true);
 	}
@@ -283,7 +310,8 @@ public class Parser {
 		String id = tok.string;
 		Entry iv = null; // index variable in symtab
 		if (is(TK.ID)) {
-			if (symtab.search(id) != null && symtab.search(id).getIsArray()) {
+			if (symtab.search(id) != null && symtab.search(id).getIsArray()) { // part
+																				// 13
 				System.err
 						.println("array on left-hand-side of assignment (used as index variable) "
 								+ id + " on line " + tok.lineNumber);
