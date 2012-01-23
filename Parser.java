@@ -333,11 +333,11 @@ public class Parser {
 		if(reverse==1){
 			gcprint(cindexName+"=");
 			gcprintid(arrayTok.string);
-			gcprint("[1];"+cindexName+">=0;"+cindexName+"--)");
+			gcprint("[1]-1;"+cindexName+">=0;"+cindexName+"--)");
 		} else {
-			gcprint(cindexName+"=0;"+cindexName+"<");
+			gcprint(cindexName+"=0;"+cindexName+"<=");
 			gcprintid(arrayTok.string);
-			gcprint("[1];"+cindexName+"++)");
+			gcprint("[1]-1;"+cindexName+"++)");
 		}
 		gcprint("{");
 		
