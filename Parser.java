@@ -10,7 +10,7 @@ public class Parser {
 	TK f_declaration[] = { TK.VAR, TK.CONST, TK.none };
 	TK f_var_decl[] = { TK.VAR, TK.none };
 	TK f_const_decl[] = { TK.CONST, TK.none };
-	TK f_statement[] = { TK.ID, TK.PRINT, TK.IF, TK.WHILE, TK.FOR, TK.REPEAT,
+	TK f_statement[] = { TK.ID, TK.PRINT, TK.IF, TK.WHILE, TK.FOR, TK.REPEAT, TK.EVERY,
 			TK.none };
 	TK f_print[] = { TK.PRINT, TK.none };
 	TK f_assignment[] = { TK.ID, TK.none };
@@ -218,6 +218,11 @@ public class Parser {
 		else
 			parse_error("oops -- statement bad first");
 	}
+	
+	private void everyproc() {
+		
+	}
+		
 
 	private void assignment() {
 		if (is(TK.ID)) {

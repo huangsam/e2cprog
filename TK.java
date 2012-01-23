@@ -39,6 +39,14 @@ public class TK {
     public static final TK LBRACKET= new TK("TK.LBRACKET");// [ - part 13
     public static final TK COLON   = new TK("TK.COLON");   // : - part 13
     public static final TK RBRACKET= new TK("TK.RBRACKET");// ] - part 13
+    
+    public static final TK ELEMENT = new TK("TK.ELEMENT"); // element - part 15
+    public static final TK INDEX   = new TK("TK.INDEX");   // index - part 15
+    public static final TK FORWARD = new TK("TK.FORWARD"); // forward - part 15
+    public static final TK REVERSE = new TK("TK.REVERSE"); // reverse - part 15
+    public static final TK EVERY   = new TK("TK.EVERY");   // every - part 15
+    
+    
 
     public static final TK ASSIGN = new TK("TK.ASSIGN");   // :=
     public static final TK LPAREN = new TK("TK.LPAREN");   // (
