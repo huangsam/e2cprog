@@ -305,11 +305,11 @@ public class Scan {
 			return TK.EVERY; // part 15
 		if (str.equals("element"))
 			return TK.ELEMENT; // part 15
-		if (str.equals("INDEX"))
+		if (str.equals("index"))
 			return TK.INDEX; // part 15
-		if (str.equals("FORWARD"))
+		if (str.equals("forward"))
 			return TK.FORWARD; // part 15
-		if (str.equals("REVERSE"))
+		if (str.equals("reverse"))
 			return TK.REVERSE; // part 15
 		if (str.equals("to"))
 			return TK.TO;
