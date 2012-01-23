@@ -290,7 +290,7 @@ public class Parser {
 	}
 
 	private void everyproc() {
-		mustbe(TK.EVERY)
+		mustbe(TK.EVERY);
 		gcprint("for(");
 		int index = 0;
 		if (is(TK.INDEX)) {
@@ -308,13 +308,48 @@ public class Parser {
 		Token arrayTok = tok;
 		mustbe(TK.ID);
 		mustbe(TK.DO);
+		gcprint("{");
+		gcprint("int ");
+		String indexName = indexTok.string+arrayTok.string ;
+		gcprintid(indexName);
+		gcprint(";\n");
 		
+		symtab.add_entry(indexName, indexTok.lineNumber, TK.VAR);
+		Entry iv = symtab.search(indexName);
+		iv.setIsIV( true );
 //		symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)
-//		Entry iv = lvalue_id("everyIndex", indexTok.lineNumber); 
+//		Entry iv = lvalue_id(, indexTok.lineNumber); 
 		
+//		for (index=2;index=sizeof( array );index++)
+		gcprint("for(");
+		if(reverse){
+			gcprint("index=sizeof(");
+			gcprintid(arrayTok.string);
+			gcprint(");index>1;index--)");
+		} else {
+			gcprint("index=2;index=sizeof(");
+			gcprintid(arrayTok.string);
+			gcprint(");index)");
+		}
+		gcprint("{");
 		
+		gcprintid(indexName);
+		gcprint(" = ");
+		if (index) {
+			gcprint("index+");
+			gcprintid(arrayTok.string);
+			gcprint("[0];");
+		} else {
+			gcprintid(arrayTok.string);
+			gcprint("[index];");
+				
+		}
+			
+			
 		block();
 		mustbe(TK.END);
+		gcprint("	}");
+		gcprint("}");
 	}
 
 	private void forproc() {
