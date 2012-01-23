@@ -1,0 +1,11 @@
+running e2c t1022
+Exception in thread "main" java.lang.NullPointerException
+	at Parser.forproc(Parser.java:313)
+	at Parser.statement(Parser.java:239)
+	at Parser.block(Parser.java:94)
+	at Parser.forproc(Parser.java:346)
+	at Parser.statement(Parser.java:239)
+	at Parser.block(Parser.java:94)
+	at Parser.program(Parser.java:84)
+	at Parser.<init>(Parser.java:35)
+	at e2c.main(e2c.java:5)

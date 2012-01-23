@@ -1,0 +1,2 @@
+running e2c t1036
+can't parse: line 4 expected id in var declaration, got Token(TK.NUM 33 4)

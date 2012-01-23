@@ -1,0 +1,8 @@
+running e2c t1031
+variable a is redeclared on line 6
+variable b is redeclared on line 6
+variable ab is redeclared on line 6
+compiling the C generated code
+t1031.c: In function 'bc':
+t1031.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out

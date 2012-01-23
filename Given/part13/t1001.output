@@ -1,0 +1,5 @@
+running e2c t1001
+compiling the C generated code
+t1001.c: In function 'bc':
+t1001.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out

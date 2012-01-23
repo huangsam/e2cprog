@@ -1,0 +1,577 @@
+running e2c t1205
+compiling the C generated code
+executing the a.out
+0
+nothing
+not much
+1
+some
+0
+1
+nothing
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+2
+nothing
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+3
+nothing
+not much
+4
+some
+0
+some
+1
+some
+2
+some
+3
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+4
+nothing
+not much
+5
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+not much
+4
+some
+0
+some
+1
+some
+2
+some
+3
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+5
+nothing
+not much
+6
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+not much
+5
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+not much
+4
+some
+0
+some
+1
+some
+2
+some
+3
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+6
+nothing
+not much
+7
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+not much
+6
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+not much
+5
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+not much
+4
+some
+0
+some
+1
+some
+2
+some
+3
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+7
+nothing
+not much
+8
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+some
+7
+not much
+7
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+not much
+6
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+not much
+5
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+not much
+4
+some
+0
+some
+1
+some
+2
+some
+3
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+8
+nothing
+not much
+9
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+some
+7
+some
+8
+not much
+8
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+some
+7
+not much
+7
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+not much
+6
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+not much
+5
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+not much
+4
+some
+0
+some
+1
+some
+2
+some
+3
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+9
+nothing
+not much
+10
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+some
+7
+some
+8
+some
+9
+not much
+9
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+some
+7
+some
+8
+not much
+8
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+some
+7
+not much
+7
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+some
+6
+not much
+6
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+some
+5
+not much
+5
+some
+0
+some
+1
+some
+2
+some
+3
+some
+4
+not much
+4
+some
+0
+some
+1
+some
+2
+some
+3
+not much
+3
+some
+0
+some
+1
+some
+2
+not much
+2
+some
+0
+some
+1
+not much
+1
+some
+0
+sum is
+55
+t is
+285

@@ -1,0 +1,7 @@
+running e2c t1034
+variable b is redeclared on line 7
+compiling the C generated code
+t1034.c: In function 'bc':
+t1034.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out
+1888

@@ -1,0 +1,36 @@
+running e2c t1109
+compiling the C generated code
+executing the a.out
+early stuff
+100
+200
+-111
+-44
+-1110
+how's precedence, associativity?
+11
+-5
+7
+-5
+loop 1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+loop 2
+5
+loop 3
+15
+loop 4
+40
+loop 5
+0
+55
+98765
+all done

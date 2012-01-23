@@ -1,0 +1,6 @@
+running e2c t1012
+compiling the C generated code
+t1012.c: In function 'bc':
+t1012.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out
+99

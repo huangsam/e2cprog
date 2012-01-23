@@ -1,0 +1,3 @@
+running e2c t1303
+mustbe: want TK.NUM, got Token(TK.ID N 3)
+can't parse: line 3 missing token (mustbe)

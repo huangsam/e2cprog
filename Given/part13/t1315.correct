@@ -1,0 +1,3 @@
+running e2c t1315
+variable a is redeclared on line 3
+subscripting non-array a on line 6

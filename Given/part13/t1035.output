@@ -1,0 +1,3 @@
+running e2c t1035
+constant x is redeclared on line 7
+constant on left-hand-side of assignment x on line 9

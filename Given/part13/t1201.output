@@ -1,0 +1,7 @@
+running e2c t1201
+compiling the C generated code
+t1201.c: In function 'bc':
+t1201.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out
+sum is
+55

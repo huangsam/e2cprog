@@ -1,0 +1,2 @@
+running e2c t1037
+can't parse: line 5 expected id in const declaration, got Token(TK.NUM 11 5)

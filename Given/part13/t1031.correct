@@ -1,0 +1,6 @@
+running e2c t1031
+variable a is redeclared on line 6
+variable b is redeclared on line 6
+variable ab is redeclared on line 6
+compiling the C generated code
+executing the a.out

@@ -1,0 +1,7 @@
+running e2c t1032
+constant x is redeclared on line 7
+compiling the C generated code
+t1032.c: In function 'bc':
+t1032.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out
+2986

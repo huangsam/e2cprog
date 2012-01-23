@@ -1,0 +1,9 @@
+running e2c t1016
+compiling the C generated code
+t1016.c: In function 'bc':
+t1016.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out
+1111
+8888
+3333
+4444

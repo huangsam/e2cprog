@@ -1,0 +1,5 @@
+running e2c t1401
+compiling the C generated code
+executing the a.out
+subscript (18) out of bounds for array a[1:10] on line 5
+4444

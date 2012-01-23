@@ -1,0 +1,18 @@
+running e2c t1026
+compiling the C generated code
+t1026.c: In function 'bc':
+t1026.c:11:6: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+executing the a.out
+1
+2
+3
+4
+7744
+444
+987
+444
+987
+444
+987
+4
+8844
