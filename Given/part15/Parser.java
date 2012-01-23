@@ -291,14 +291,19 @@ public class Parser {
 
 	private void everyproc() {
 		mustbe(TK.EVERY);
-//		gcprint("for(");
 		int index = 0;
-		if (is(TK.INDEX)) {
-			index = 1;
+		if(is(TK.ELEMENT)) {
+			index= 0;
+			mustbe(TK.ELEMENT);
+		} else if (is(TK.INDEX)) {
+			index= 1;
 			mustbe(TK.INDEX);
-		}
+		} 
 		int reverse = 0;
-		if (is(TK.REVERSE)) {
+		if(is(TK.FORWARD)) {
+			reverse = 0;
+			mustbe(TK.FORWARD);
+		} else if (is(TK.REVERSE)) {
 			reverse = 1;
 			mustbe(TK.REVERSE);
 		}
@@ -321,27 +326,30 @@ public class Parser {
 //		Entry iv = lvalue_id(, indexTok.lineNumber); 
 		
 //		for (index=2;index=sizeof( array );index++)
+		String cindexName = "index"+indexTok.string;
+		gcprint("int "+cindexName+";");
+		
 		gcprint("for(");
 		if(reverse==1){
-			gcprint("index=sizeof(");
+			gcprint(cindexName+"=sizeof(");
 			gcprintid(arrayTok.string);
-			gcprint(");index>1;index--)");
+			gcprint(");"+cindexName+">1;"+cindexName+"--)");
 		} else {
-			gcprint("index=2;index=sizeof(");
+			gcprint(cindexName+"=2;"+cindexName+"=sizeof(");
 			gcprintid(arrayTok.string);
-			gcprint(");index)");
+			gcprint(");"+cindexName+"++)");
 		}
 		gcprint("{");
 		
 		gcprintid(indexName);
 		gcprint(" = ");
 		if (index==1) {
-			gcprint("index+");
+			gcprint(cindexName+"+");
 			gcprintid(arrayTok.string);
 			gcprint("[0];");
 		} else {
 			gcprintid(arrayTok.string);
-			gcprint("[index];");
+			gcprint("["+cindexName+"];");
 				
 		}
 			

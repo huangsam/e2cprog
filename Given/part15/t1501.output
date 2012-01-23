@@ -3,6 +3,33 @@ variable x is redeclared on line 28
 variable x is redeclared on line 34
 variable x is redeclared on line 40
 compiling the C generated code
-t1501.c: In function 'main':
-t1501.c:118:1: error: 'index' undeclared (first use in this function)
-t1501.c:118:1: note: each undeclared identifier is reported only once for each function it appears in
+executing the a.out
+subscript (53) out of bounds for array a[1:10] on line 24
+1
+101
+2
+102
+3
+103
+4
+104
+5
+105
+6
+106
+7
+107
+8
+108
+9
+109
+10
+110
+-4
+1004
+-3
+1003
+-2
+1002
+index x: a
+53

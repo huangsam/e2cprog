@@ -109,3 +109,111 @@ x_b
 printf(
 "%s\n", "element x: a"
 );
+{
+int 
+x_x
+;
+
+int indexx;
+for(
+indexx=2;indexx=sizeof(
+x_a
+);indexx++)
+{
+x_x
+ = 
+x_a
+[indexx];
+{
+printf("%d\n", 
+x_x
+);
+}
+	}
+}
+printf(
+"%s\n", "element x: c"
+);
+{
+int 
+x_x
+;
+
+int indexx;
+for(
+indexx=2;indexx=sizeof(
+x_c
+);indexx++)
+{
+x_x
+ = 
+x_c
+[indexx];
+{
+printf("%d\n", 
+x_x
+);
+}
+	}
+}
+printf(
+"%s\n", "element reverse x: a"
+);
+{
+int 
+x_x
+;
+
+int indexx;
+for(
+indexx=sizeof(
+x_a
+);indexx>1;indexx--)
+{
+x_x
+ = 
+x_a
+[indexx];
+{
+printf("%d\n", 
+x_x
+);
+}
+	}
+}
+printf(
+"%s\n", "element reverse x: c"
+);
+{
+int 
+x_x
+;
+
+int indexx;
+for(
+indexx=sizeof(
+x_c
+);indexx>1;indexx--)
+{
+x_x
+ = 
+x_c
+[indexx];
+{
+printf("%d\n", 
+x_x
+);
+}
+	}
+}
+}
+int bc(int *a, int ln, int exp, char arName)
+{
+int subscript = exp - a[0] + 2;
+if( subscript < a[1] + 2 && subscript >= 2 )
+return subscript;
+fprintf(stderr, "subscript (%d) out of bounds for array ", exp );
+fprintf(stderr, "%c[%d:%d] on line %d\n",arName,a[0],a[0]+a[1]-1,ln );
+exit(1);
+return 0;
+}
