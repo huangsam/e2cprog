@@ -1,7 +1,6 @@
 git pull 
-cp -f *.java ../Given/part13/
-cd ../Given/part13
+cp -f *.java ../Given/part15/
+cd ../Given/part15
 make
 runall > log.txt
 more +150 log.txt
-

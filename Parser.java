@@ -9,7 +9,6 @@ public class Parser {
 	// we generally just compare tkrep with the first token.
 	TK f_declaration[] = { TK.VAR, TK.CONST, TK.none };
 	TK f_var_decl[] = { TK.VAR, TK.none };
-	// TK f_decl_id[] = {TK.VAR, TK.LBRACKET, TK.RBRACKET, TK.none};
 	TK f_const_decl[] = { TK.CONST, TK.none };
 	TK f_statement[] = { TK.ID, TK.PRINT, TK.IF, TK.WHILE, TK.FOR, TK.REPEAT,
 			TK.none };
@@ -25,6 +24,8 @@ public class Parser {
 	// scan just calls the scanner's scan method and saves the result in tok.
 	private Token tok; // the current token
 
+	private boolean boundCheck = false; // part 14
+
 	private void scan() {
 		tok = scanner.scan();
 	}
@@ -38,10 +39,10 @@ public class Parser {
 		if (tok.kind != TK.EOF) {
 			// System.out.println(tok.kind);
 			parse_error("junk after logical end of program" /*
-									 * ; STR,TK=" +
-									 * tok.string + ','
-									 * + tok.kind
-									 */);
+															 * ; STR,TK=" +
+															 * tok.string + ','
+															 * + tok.kind
+															 */);
 		}
 	}
 
@@ -60,39 +61,24 @@ public class Parser {
 		System.out.println("x_" + str);
 	}
 
-	private void bc() { // part 14
-		// Notes for our toy converter
-		// array[0] ::= lb
-		// array[1] ::= size of array
-		// array[2:(size+2-1)] ::= int elements
-		// E's ub := array[1] + array[0] - 1
-		gcprint("int bc(char *arrayName, int *array, int index, int lno) {");
-		gcprint("int curSize = array[1];");
-		gcprint("int ub = array[1] + array[0] - 1;");
-		gcprint("if(index < array[0] || index > ub) {");
-		gcprint("fprintf(stderr,\"subscript (%d) out of bounds for "
-				+ "array %s[%d:%d] on line %d\",");
-		gcprint("index,");
-		gcprint("arrayName,");
-		gcprint("array[0],");
-		gcprint("ub,");
-		gcprint("lno");
-		gcprint(");");
-		gcprint("exit(1);");
-		gcprint("}");
-		gcprint("else {");
-		gcprint("return 1;");
-		gcprint("}");
-		gcprint("}\n");
-	}
-
 	private void program() {
 		gcprint("#include <stdio.h>");
-		gcprint("#include <stdlib.h>\n"); // part 14
-// 		gcprint("int bcCheck;\n");
-		bc(); // part 14
+		gcprint("#include <stdlib.h>");
+		gcprint("int bc(int *a, int ln, int exp, char arName);"); // part 14
 		gcprint("main() ");
 		block();
+		if (boundCheck) // part 14
+			generateBoundCheck();
+	}
+
+	private void generateBoundCheck() { // part 14
+		gcprint("int bc(int *a, int ln, int exp, char arName)\n{");
+		gcprint("int subscript = exp - a[0] + 2;");
+		gcprint("if( subscript < a[1] + 2 && subscript >= 2 )\nreturn subscript;");
+		gcprint("fprintf(stderr, \"subscript (%d) out of bounds for array \", exp );");
+		gcprint("fprintf(stderr, \"%c[%d:%d] on line %d\\n\",arName,a[0],a[0]+a[1]-1,ln );");
+		gcprint("exit(1);");
+		gcprint("return 0;\n}");
 	}
 
 	private void block() {
@@ -125,13 +111,6 @@ public class Parser {
 			var_decl_id();
 		}
 	}
-
-	/*
-	 * private void var_decl_id() { if( is(TK.ID) ) { if
-	 * (symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)) { gcprint("int ");
-	 * gcprintid(tok.string); gcprint("="+initialValueEVariable+";"); } scan();
-	 * } else { parse_error("expected id in var declaration, got " + tok); } }
-	 */
 
 	private void var_decl_id() {
 		if (is(TK.ID)) {
@@ -178,7 +157,7 @@ public class Parser {
 					do {
 						scan();
 					} while (!is(TK.RBRACKET));
-					mustbe(TK.RBRACKET); // implicit scan
+					scan();
 				}
 			}
 		} else {
@@ -188,11 +167,10 @@ public class Parser {
 
 	private void arrayInit(String arrayName, int arraySize, int lb) {
 		String initialArrayValues = "";
-		for (int i = 0; i < arraySize; i++) {
-			//initialArrayValues += initialArrayElemValue + ", ";
-			initialArrayValues += ", " + initialArrayElemValue;
+		for (int i = 0; i <= arraySize; i++) {
+			initialArrayValues += initialArrayElemValue + ", ";
 		}
-		gcprintid(arrayName + "[] = {" + lb + ", " + arraySize
+		gcprintid(arrayName + "[] = {" + lb + ", " + arraySize + ", "
 				+ initialArrayValues + "};");
 		symtab.search(arrayName).setIsArray(true);
 	}
@@ -312,8 +290,7 @@ public class Parser {
 		String id = tok.string;
 		Entry iv = null; // index variable in symtab
 		if (is(TK.ID)) {
-			if (symtab.search(id) != null && symtab.search(id).getIsArray()) { // part
-																				// 13
+			if (symtab.search(id) != null && symtab.search(id).getIsArray()) {
 				System.err
 						.println("array on left-hand-side of assignment (used as index variable) "
 								+ id + " on line " + tok.lineNumber);
@@ -456,28 +433,19 @@ public class Parser {
 			System.exit(1);
 		}
 		if (e.getIsArray()) {
-			int lineN = tok.lineNumber;
 			scan();
 			if (!is(TK.LBRACKET)) {
 				System.err.println("missing subscript for array " + id
 						+ " on line " + lno);
 				System.exit(1);
 			}
-			mustbe(TK.LBRACKET);
-			// 			scan();
-			/* part 14 */
-			// if id is unique then the line below is unique too.
-			gcprint( id +"bcCheck ="); 
+			scan();
+			boundCheck = true; // part 14
+			/* (int *a, int ln, int exp, char arName) */
+			gcprintid(id + "[bc(x_" + id + ", " + lno + ", "); // part 14
 			expression();
-			
-			gcprint(id+"name = " +id);
-			gcprint( "bc(\""+id+"\"," ); 
-			gcprintid(id);
-			gcprint(","+id+"bcCheck"+ "," + lineN + ");");
-			
-			gcprintid(id + "[");
-			gcprint(id +"bcCheck"); // already boundchecked
-			gcprint("-x_" + id + "[0]+2]");
+			gcprint(", '" + id + "')]"); // part 14
+			// gcprint("-x_"+id+"[0]+2]");
 			return e;
 		}
 		gcprintid(id);
@@ -497,21 +465,13 @@ public class Parser {
 						+ " on line " + lno);
 				System.exit(1);
 			}
-			mustbe(TK.LBRACKET);
-			// 			scan();
-			/* part 14 */
-			// if id is unique then the line below is unique too.
-			gcprint( id +"bcCheck ="); 
+			scan();
+			boundCheck = true; // part 14
+			/* (int *a, int ln, int exp, char arName) */
+			gcprintid(id + "[bc(x_" + id + ", " + lno + ", "); // part 14
 			expression();
-			
-			gcprint(id+"name = " +id);
-			gcprint( "bc(\""+id+"\"," ); 
-			gcprintid(id);
-			gcprint(","+id+"bcCheck"+ "," + lineN + ");");
-			
-			gcprintid(id + "[");
-			gcprint(id +"bcCheck"); // already boundchecked
-			gcprint("-x_" + id + "[0]+2]");
+			gcprint(", '" + id + "')]"); // part 14
+			// gcprint("-x_"+id+"[0]+2]");
 			return;
 		}
 		gcprintid(id);
