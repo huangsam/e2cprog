@@ -322,7 +322,7 @@ public class Parser {
 		
 //		for (index=2;index=sizeof( array );index++)
 		gcprint("for(");
-		if(reverse){
+		if(reverse==1){
 			gcprint("index=sizeof(");
 			gcprintid(arrayTok.string);
 			gcprint(");index>1;index--)");
@@ -335,7 +335,7 @@ public class Parser {
 		
 		gcprintid(indexName);
 		gcprint(" = ");
-		if (index) {
+		if (index==1) {
 			gcprint("index+");
 			gcprintid(arrayTok.string);
 			gcprint("[0];");
