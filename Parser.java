@@ -66,6 +66,7 @@ public class Parser {
 		gcprint("#include <stdio.h>");
 		gcprint("#include <stdlib.h>");
 		gcprint("int bc(int *a, int ln, int exp, char arName);"); // part 14
+		gcprint("int everyIndex;"); // part 15
 		gcprint("main() ");
 		block();
 		if (boundCheck) // part 14
@@ -112,7 +113,7 @@ public class Parser {
 			var_decl_id();
 		}
 	}
-
+	
 	private void var_decl_id() {
 		if (is(TK.ID)) {
 			if (symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)) {
@@ -222,31 +223,6 @@ public class Parser {
 			parse_error("oops -- statement bad first");
 	}
 	
-	private void everyproc() {
-		mustbe(TK.EVERY)
-		int index = 0;
-		if (is(TK.INDEX)) {
-			index = 1;
-			mustbe(TK.INDEX);
-		}
-		int reverse = 0;
-		if (is(TK.REVERSE)) {
-			reverse = 1;
-			mustbe(TK.REVERSE);
-		}
-		Token tTok = tok;
-		mustbe(TK.ID);
-		mustbe(TK.COLON);
-		Token arrayTok = tok;
-		mustbe(TK.ID);
-		mustbe(TK.DO);
-		
-		
-		block();
-		mustbe(TK.END);
-	}
-	
-		
 
 	private void assignment() {
 		if (is(TK.ID)) {
@@ -309,6 +285,34 @@ public class Parser {
 		expression();
 		gcprint(")");
 		mustbe(TK.DO);
+		block();
+		mustbe(TK.END);
+	}
+
+	private void everyproc() {
+		mustbe(TK.EVERY)
+		gcprint("for(");
+		int index = 0;
+		if (is(TK.INDEX)) {
+			index = 1;
+			mustbe(TK.INDEX);
+		}
+		int reverse = 0;
+		if (is(TK.REVERSE)) {
+			reverse = 1;
+			mustbe(TK.REVERSE);
+		}
+		Token indexTok = tok;
+		mustbe(TK.ID);
+		mustbe(TK.COLON);
+		Token arrayTok = tok;
+		mustbe(TK.ID);
+		mustbe(TK.DO);
+		
+//		symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)
+//		Entry iv = lvalue_id("everyIndex", indexTok.lineNumber); 
+		
+		
 		block();
 		mustbe(TK.END);
 	}
