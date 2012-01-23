@@ -291,19 +291,20 @@ public class Parser {
 
 	private void everyproc() {
 		mustbe(TK.EVERY);
-		
+		int index = 0;
 		if(is(TK.ELEMENT)) {
-			int index = 0;
+			index= 0;
 			mustbe(TK.ELEMENT);
 		} else if (is(TK.INDEX)) {
-			int index = 1;
+			index= 1;
 			mustbe(TK.INDEX);
 		} 
+		int reverse = 0;
 		if(is(TK.FORWARD)) {
-			int reverse = 0;
+			reverse = 0;
 			mustbe(TK.FORWARD);
 		} else if (is(TK.REVERSE)) {
-			int reverse = 1;
+			reverse = 1;
 			mustbe(TK.REVERSE);
 		}
 		Token indexTok = tok;
