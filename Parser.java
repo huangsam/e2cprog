@@ -290,7 +290,7 @@ public class Parser {
 	}
 
 	private void everyproc() {
-		mustbe(TK.EVERY)
+		mustbe(TK.EVERY);
 		
 		if(is(TK.ELEMENT)) {
 			int index = 0;
