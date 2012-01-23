@@ -331,20 +331,20 @@ public class Parser {
 		
 		gcprint("for(");
 		if(reverse==1){
-			gcprint(cindexName+"=sizeof(");
+			gcprint(cindexName+"=");
 			gcprintid(arrayTok.string);
-			gcprint(")-3;"+cindexName+">1;"+cindexName+"--)");
+			gcprint("[1];"+cindexName+">=0;"+cindexName+"--)");
 		} else {
-			gcprint(cindexName+"=2;"+cindexName+"<sizeof(");
+			gcprint(cindexName+"=0;"+cindexName+"<");
 			gcprintid(arrayTok.string);
-			gcprint(")-3;"+cindexName+"++)");
+			gcprint("[1];"+cindexName+"++)");
 		}
 		gcprint("{");
 		
 		gcprintid(indexName);
 		gcprint(" = ");
 		if (index==1) {
-			gcprint(cindexName+"-2+");
+			gcprint(cindexName+"+");
 			gcprintid(arrayTok.string);
 			gcprint("[0];");
 		} else {
