@@ -60,15 +60,12 @@ public class Parser {
 		System.out.println("x_" + str);
 	}
 
-	private void program() {
+	private void bc() { // part 14
 		// Notes for our toy converter
 		// array[0] ::= lb
 		// array[1] ::= size of array
 		// array[2:(size+2-1)] ::= int elements
 		// E's ub := array[1] + array[0] - 1
-		gcprint("#include <stdio.h>");
-		gcprint("#include <stdlib.h>\n");
-		/* bc() function */
 		gcprint("int bc(char *arrayName, int *array, int index, int lno) {");
 		gcprint("int curSize = array[1];");
 		gcprint("int ub = array[1] + array[0] - 1;");
@@ -87,7 +84,12 @@ public class Parser {
 		gcprint("return 1;");
 		gcprint("}");
 		gcprint("}\n");
+	}
 
+	private void program() {
+		gcprint("#include <stdio.h>");
+		gcprint("#include <stdlib.h>\n"); // part 14
+		bc(); // part 14
 		gcprint("main() ");
 		block();
 	}
@@ -172,11 +174,10 @@ public class Parser {
 			} else {
 				scan();
 				if (is(TK.LBRACKET)) {
-					scan();
-					scan();
-					scan();
-					scan();
-					scan();
+					do {
+						scan();
+					} while (!is(TK.RBRACKET));
+					mustbe(TK.RBRACKET); // implicit scan
 				}
 			}
 		} else {
@@ -187,7 +188,7 @@ public class Parser {
 	private void arrayInit(String arrayName, int arraySize, int lb) {
 		String initialArrayValues = "";
 		for (int i = 0; i < arraySize; i++) {
-			// initialArrayValues += initialArrayElemValue + ", ";
+			//initialArrayValues += initialArrayElemValue + ", ";
 			initialArrayValues += ", " + initialArrayElemValue;
 		}
 		gcprintid(arrayName + "[] = {" + lb + ", " + arraySize
