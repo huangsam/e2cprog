@@ -38,10 +38,10 @@ public class Parser {
 		if (tok.kind != TK.EOF) {
 			// System.out.println(tok.kind);
 			parse_error("junk after logical end of program" /*
-															 * ; STR,TK=" +
-															 * tok.string + ','
-															 * + tok.kind
-															 */);
+									 * ; STR,TK=" +
+									 * tok.string + ','
+									 * + tok.kind
+									 */);
 		}
 	}
 
