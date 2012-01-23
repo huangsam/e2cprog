@@ -301,6 +301,16 @@ public class Scan {
 			return TK.REPEAT; // part 12
 		if (str.equals("until"))
 			return TK.UNTIL; // part 12
+		if (str.equals("every"))
+			return TK.EVERY; // part 15
+		if (str.equals("element"))
+			return TK.ELEMENT; // part 15
+		if (str.equals("INDEX"))
+			return TK.INDEX; // part 15
+		if (str.equals("FORWARD"))
+			return TK.FORWARD; // part 15
+		if (str.equals("REVERSE"))
+			return TK.REVERSE; // part 15
 		if (str.equals("to"))
 			return TK.TO;
 		if (str.equals("downto"))
