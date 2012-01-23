@@ -66,6 +66,7 @@ public class Parser {
 		gcprint("#include <stdio.h>");
 		gcprint("#include <stdlib.h>");
 		gcprint("int bc(int *a, int ln, int exp, char arName);"); // part 14
+		gcprint("int index;");
 		gcprint("int everyIndex;"); // part 15
 		gcprint("main() ");
 		block();
@@ -321,6 +322,7 @@ public class Parser {
 //		Entry iv = lvalue_id(, indexTok.lineNumber); 
 		
 //		for (index=2;index=sizeof( array );index++)
+//		gcprint("int index;");
 		gcprint("for(");
 		if(reverse==1){
 			gcprint("index=sizeof(");

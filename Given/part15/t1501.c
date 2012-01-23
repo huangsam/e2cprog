@@ -114,16 +114,8 @@ int
 x_x
 ;
 
-for(
-index=2;index=sizeof(
-x_a
-);index)
-{
-x_x
- = 
-index+
-x_a
-[0];
+for(index=2;index=sizeof(x_a);index){
+x_x =index+x_a[0];
 {
 printf("%d\n", 
 x_x
