@@ -310,7 +310,7 @@ public class Parser {
 		mustbe(TK.DO);
 		gcprint("{");
 		gcprint("int ");
-		String indexName = indexTok.string+arrayTok.string ;
+		String indexName = indexTok.string;//+arrayTok.string ;
 		gcprintid(indexName);
 		gcprint(";\n");
 		

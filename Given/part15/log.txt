@@ -71,8 +71,11 @@
 ==== t1404 ====
 ==== t1405 ====
 ==== t1501 ====
-2,85c2
-< compiling the C generated code
+1a2,4
+> variable x is redeclared on line 28
+> variable x is redeclared on line 34
+> variable x is redeclared on line 40
+3,85c6,9
 < executing the a.out
 < 1
 < 101
@@ -157,9 +160,12 @@
 < -4
 < 1004
 ---
-> undeclared variable every on line 22
+> t1501.c: In function 'main':
+> t1501.c:113:1: error: expected expression before '{' token
+> t1501.c:143:1: error: expected expression before 'for'
+> t1501.c:243:1: error: expected declaration or statement at end of input
 ==== t1502 ====
-2,59c2
+2,59c2,3
 < compiling the C generated code
 < executing the a.out
 < 1
@@ -219,9 +225,10 @@
 < 1003
 < 1004
 ---
-> undeclared variable every on line 22
+> mustbe: want TK.ID, got Token(TK.ELEMENT element 22)
+> can't parse: line 22 missing token (mustbe)
 ==== t1503 ====
-2,59c2
+2,59c2,3
 < compiling the C generated code
 < executing the a.out
 < 1
@@ -281,9 +288,10 @@
 < 1003
 < 1004
 ---
-> undeclared variable every on line 22
+> mustbe: want TK.ID, got Token(TK.FORWARD forward 22)
+> can't parse: line 22 missing token (mustbe)
 ==== t1504 ====
-2,59c2
+2,59c2,3
 < compiling the C generated code
 < executing the a.out
 < 1
@@ -343,14 +351,16 @@
 < 1003
 < 1004
 ---
-> undeclared variable every on line 22
+> mustbe: want TK.ID, got Token(TK.ELEMENT element 22)
+> can't parse: line 22 missing token (mustbe)
 ==== t1505 ====
-2c2
+2c2,3
 < undeclared variable x on line 18
 ---
-> undeclared variable every on line 14
+> mustbe: want TK.ID, got Token(TK.ELEMENT element 14)
+> can't parse: line 14 missing token (mustbe)
 ==== t1506 ====
-2,15c2
+2,15c2,3
 < compiling the C generated code
 < executing the a.out
 < element forward x: a
@@ -366,14 +376,16 @@
 < 110
 < 12
 ---
-> undeclared variable every on line 16
+> mustbe: want TK.ID, got Token(TK.ELEMENT element 16)
+> can't parse: line 16 missing token (mustbe)
 ==== t1507 ====
-2c2
+2c2,3
 < index variable on left-hand-side of assignment x on line 18
 ---
-> undeclared variable every on line 16
+> mustbe: want TK.ID, got Token(TK.ELEMENT element 16)
+> can't parse: line 16 missing token (mustbe)
 ==== t1508 ====
-2,19c2
+2,19c2,3
 < compiling the C generated code
 < executing the a.out
 < element forward x: c
@@ -393,9 +405,10 @@
 < 1003
 < 1002
 ---
-> undeclared variable every on line 12
+> mustbe: want TK.ID, got Token(TK.ELEMENT element 12)
+> can't parse: line 12 missing token (mustbe)
 ==== t1509 ====
-2,92c2
+2,92c2,3
 < compiling the C generated code
 < executing the a.out
 < forward x: a
@@ -488,14 +501,16 @@
 < 85
 < 1002
 ---
-> undeclared variable every on line 12
+> mustbe: want TK.ID, got Token(TK.FORWARD forward 12)
+> can't parse: line 12 missing token (mustbe)
 ==== t1510 ====
-2c2
+2c2,3
 < can't parse: line 4 right-hand-side of : in every isn't array e
 ---
-> undeclared variable every on line 4
+> mustbe: want TK.ID, got Token(TK.FORWARD forward 4)
+> can't parse: line 4 missing token (mustbe)
 ==== t1511 ====
-2,33c2
+2,33c2,3
 < compiling the C generated code
 < executing the a.out
 < 999
@@ -529,4 +544,5 @@
 < 8991
 < 8990
 ---
-> undeclared variable every on line 3
+> mustbe: want TK.ID, got Token(TK.FORWARD forward 7)
+> can't parse: line 7 missing token (mustbe)

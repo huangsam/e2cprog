@@ -1,2 +1,9 @@
 running e2c t1501
-undeclared variable every on line 22
+variable x is redeclared on line 28
+variable x is redeclared on line 34
+variable x is redeclared on line 40
+compiling the C generated code
+t1501.c: In function 'main':
+t1501.c:113:1: error: expected expression before '{' token
+t1501.c:143:1: error: expected expression before 'for'
+t1501.c:243:1: error: expected declaration or statement at end of input

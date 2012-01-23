@@ -1,2 +1,3 @@
 running e2c t1510
-undeclared variable every on line 4
+mustbe: want TK.ID, got Token(TK.FORWARD forward 4)
+can't parse: line 4 missing token (mustbe)

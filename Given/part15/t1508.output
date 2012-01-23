@@ -1,2 +1,3 @@
 running e2c t1508
-undeclared variable every on line 12
+mustbe: want TK.ID, got Token(TK.ELEMENT element 12)
+can't parse: line 12 missing token (mustbe)
