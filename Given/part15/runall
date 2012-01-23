@@ -8,5 +8,5 @@ foreach i ( t*.e )
 	# clean things up
 	# you may want to comment out following line to leave .c file
 	# for debugging purposes
-	/bin/rm -f $b.o $b.c
+	/bin/rm -f $b.o #$b.c
 end
