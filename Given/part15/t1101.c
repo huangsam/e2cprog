@@ -2,31 +2,15 @@
 #include <stdlib.h>
 int bc(int *a, int ln, int exp, char arName);
 int everyIndex;
-main() 
-{
-printf(
-"%s\n", "hi"
-);
-if(
-3
->
-4
-)
-{
-printf(
-"%s\n", "not okay"
-);
+main() {
+printf("%s\n", "hi");
+if(3>
+4){
+printf("%s\n", "not okay");
 }
-else
-{
-printf(
-"%s\n", "this works okay"
-);
-printf(
-"%s\n", "really it does"
-);
+else{
+printf("%s\n", "this works okay");
+printf("%s\n", "really it does");
 }
-printf(
-"%s\n", "bye, bye for now"
-);
+printf("%s\n", "bye, bye for now");
 }

@@ -2,9 +2,6 @@
 #include <stdlib.h>
 int bc(int *a, int ln, int exp, char arName);
 int everyIndex;
-main() 
-{
-printf(
-"%s\n", "hi"
-);
+main() {
+printf("%s\n", "hi");
 }
