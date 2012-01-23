@@ -77,7 +77,9 @@ x_c
 x_x
  = 
 x_c
-[indexx];
+[indexx+
+x_c
+[0]];
 {
 printf(
 "%s\n", "inloop"
@@ -99,7 +101,9 @@ x_c
 x_x
  = 
 x_c
-[indexx];
+[indexx+
+x_c
+[0]];
 {
 printf("%d\n", 
 x_x

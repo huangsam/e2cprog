@@ -31,7 +31,9 @@ x_e
 x_x
  = 
 x_e
-[indexx];
+[indexx+
+x_e
+[0]];
 {
 printf("%d\n", 
 x_x

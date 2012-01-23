@@ -81,7 +81,9 @@ x_a
 x_x
  = 
 x_a
-[indexx];
+[indexx+
+x_a
+[0]];
 {
 printf("%d\n", 
 x_x

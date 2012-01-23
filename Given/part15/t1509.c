@@ -76,7 +76,9 @@ x_a
 x_x
  = 
 x_a
-[indexx];
+[indexx+
+x_a
+[0]];
 {
 int 
 x_a
@@ -111,7 +113,9 @@ x_c
 x_x
  = 
 x_c
-[indexx];
+[indexx+
+x_c
+[0]];
 {
 int 
 x_c[] = {22, 4, 4444, 4444, 4444, 4444, 4444, };
@@ -165,7 +169,9 @@ x_c
 x_x
  = 
 x_c
-[indexx];
+[indexx+
+x_c
+[0]];
 {
 printf("%d\n", 
 x_x
@@ -196,7 +202,9 @@ x_c
 x_x
  = 
 x_c
-[indexx];
+[indexx+
+x_c
+[0]];
 {
 int 
 x_c[] = {22, 4, 4444, 4444, 4444, 4444, 4444, };
@@ -250,7 +258,9 @@ x_c
 x_y
  = 
 x_c
-[indexy];
+[indexy+
+x_c
+[0]];
 {
 printf("%d\n", 
 x_y

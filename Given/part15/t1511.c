@@ -53,7 +53,9 @@ x_a
 x_x
  = 
 x_a
-[indexx];
+[indexx+
+x_a
+[0]];
 {
 printf("%d\n", 
 x_x
@@ -113,7 +115,9 @@ x_b
 x_x
  = 
 x_b
-[indexx];
+[indexx+
+x_b
+[0]];
 {
 x_k
 =
@@ -149,7 +153,9 @@ x_b
 x_x
  = 
 x_b
-[indexx];
+[indexx+
+x_b
+[0]];
 {
 printf("%d\n", 
 x_x

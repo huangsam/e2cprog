@@ -3,17 +3,17 @@ compiling the C generated code
 executing the a.out
 element forward x: c
 inloop
--4
--4
-3
-1004
+99
+99
+8
+1207100432
 inloop
-3
--4
-3
-1004
+8
+99
+8
+1207100432
 inloop
-1004
--4
-3
-1004
+1207100432
+99
+8
+1207100432

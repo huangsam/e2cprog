@@ -80,252 +80,253 @@
 > variable x is redeclared on line 27
 > variable x is redeclared on line 32
 > variable x is redeclared on line 37
-30a34,35
-> 1
+30a34
 > 10
-39,40d43
-< 109
+40d43
 < 110
-41a45,46
-> -4
-> 3
-43,44d47
+42,44c45,47
+< 1004
 < 1003
 < 1002
-46,47d48
-< 110
-< 109
-55a57,58
-> 10
+---
+> 99
+> 0
 > 1
-57,58d59
+46d48
+< 110
+55a58
+> 10
+57,59c60,62
 < 1002
 < 1003
-59a61,62
-> 3
-> -4
+< 1004
+---
+> 1
+> 0
+> 99
 ==== t1503 ====
 1a2,4
 > variable x is redeclared on line 27
 > variable x is redeclared on line 32
 > variable x is redeclared on line 37
-30a34,35
-> 1
+30a34
 > 10
-39,40d43
-< 109
+40d43
 < 110
-41a45,46
-> -4
-> 3
-43,44d47
+42,44c45,47
+< 1004
 < 1003
 < 1002
-46,47d48
-< 110
-< 109
-55a57,58
-> 10
+---
+> 99
+> 0
 > 1
-57,58d59
+46d48
+< 110
+55a58
+> 10
+57,59c60,62
 < 1002
 < 1003
-59a61,62
-> 3
-> -4
+< 1004
+---
+> 1
+> 0
+> 99
 ==== t1504 ====
 1a2,4
 > variable x is redeclared on line 27
 > variable x is redeclared on line 32
 > variable x is redeclared on line 37
-30a34,35
-> 1
+30a34
 > 10
-39,40d43
-< 109
+40d43
 < 110
-41a45,46
-> -4
-> 3
-43,44d47
+42,44c45,47
+< 1004
 < 1003
 < 1002
-46,47d48
-< 110
-< 109
-55a57,58
-> 10
+---
+> 99
+> 0
 > 1
-57,58d59
+46d48
+< 110
+55a58
+> 10
+57,59c60,62
 < 1002
 < 1003
-59a61,62
-> 3
-> -4
+< 1004
+---
+> 1
+> 0
+> 99
 ==== t1505 ====
 2c2,5
 < undeclared variable x on line 18
 ---
 > compiling the C generated code
 > t1505.c: In function 'main':
-> t1505.c:89:1: error: 'x_x' undeclared (first use in this function)
-> t1505.c:89:1: note: each undeclared identifier is reported only once for each function it appears in
+> t1505.c:91:1: error: 'x_x' undeclared (first use in this function)
+> t1505.c:91:1: note: each undeclared identifier is reported only once for each function it appears in
 ==== t1506 ====
 1a2
 > variable x is redeclared on line 16
-4a6,7
-> 1
+4a6
 > 10
-13,14d15
-< 109
+14d15
 < 110
 ==== t1507 ====
 1a2
 > variable x is redeclared on line 16
 ==== t1508 ====
-5a6,8
-> -4
-> -4
-> 3
-7,9d9
+6,9c6,9
+< 1004
 < 1004
 < 1003
 < 1002
-11c11,13
-< 1003
 ---
-> 3
-> -4
-> 3
-13,14d14
+> 99
+> 99
+> 8
+> 1207100432
+11,14c11,14
 < 1003
-< 1002
-16d15
-< 1002
-18,19c17,19
+< 1004
 < 1003
 < 1002
 ---
-> -4
-> 3
-> 1004
+> 8
+> 99
+> 8
+> 1207100432
+16,19c16,19
+< 1002
+< 1004
+< 1003
+< 1002
+---
+> 1207100432
+> 99
+> 8
+> 1207100432
 ==== t1509 ====
 1a2,5
 > variable x is redeclared on line 20
 > variable x is redeclared on line 27
 > variable x is redeclared on line 34
 > variable y is redeclared on line 41
-4a9,12
-> 1
-> 12
+4a9,10
 > 10
 > 12
-21,24d28
-< 109
-< 12
+23,24d28
 < 110
 < 12
 26c30
 < 1004
 ---
-> -4
-27a32,33
-> 22
-> 4
-30,33c36,37
-< 20024
+> 134513120
+28,29c32,36
+< 20022
+< 20023
+---
+> 103
+> 104
+> 105
+> 106
+> 134513120
+31,33d37
 < 20025
 < 1004
 < 1003
+35,36c39,42
+< 20022
+< 20023
 ---
-> -4
-> 3
-34a39,40
-> 22
-> 4
-37,40c43,44
-< 20024
-< 20025
+> 103
+> 104
+> 105
+> 106
+39,40d44
 < 1003
 < 1002
----
-> 3
-> 1004
-41a46,47
-> 22
-> 4
-44,47d49
-< 20024
-< 20025
-< 1002
-< bottom forward x: c
-48a51,52
-> bottom forward x: c
-> -4
-50c54
+42,44c46,49
 < 20022
+< 20023
+< 20024
 ---
-> 22
+> 103
+> 104
+> 105
+> 106
+46d50
+< 1002
+48c52,53
+< 1004
+---
+> 20023
+> 4444
+50d54
+< 20022
 53c57
 < 20023
 ---
-> 4
+> 4444
 56c60
 < 20024
 ---
-> 20022
+> 4444
 59c63
 < 20025
 ---
-> 20023
-62,63c66,67
+> 1
+62,63c66,68
 < 1004
 < 1003
 ---
-> -4
-> 3
-65c69
+> 20023
+> 20024
+> 4444
+65d69
 < 20022
----
-> 22
 68c72
 < 20023
 ---
-> 4
+> 4444
 71c75
 < 20024
 ---
-> 20022
+> 4444
 74c78
 < 20025
 ---
-> 20023
-77,78c81,82
+> 1
+77,78c81,83
 < 1003
 < 1002
 ---
-> 3
-> 1004
-80c84
+> 20024
+> 20025
+> 4444
+80d84
 < 20022
----
-> 22
 83c87
 < 20023
 ---
-> 4
+> 4444
 86c90
 < 20024
 ---
-> 20022
+> 4444
 89c93
 < 20025
 ---
-> 20023
+> 1
 92c96
 < 1002
 ---
-> 1004
+> 20025
 ==== t1510 ====
 2c2,5
 < can't parse: line 4 right-hand-side of : in every isn't array e
@@ -333,18 +334,16 @@
 > compiling the C generated code
 > t1510.c: In function 'main':
 > t1510.c:29:1: error: subscripted value is neither array nor pointer nor vector
-> t1510.c:34:1: error: subscripted value is neither array nor pointer nor vector
+> t1510.c:36:1: error: subscripted value is neither array nor pointer nor vector
 ==== t1511 ====
 1a2,5
 > variable x is redeclared on line 7
 > variable x is redeclared on line 12
 > variable x is redeclared on line 18
 > variable x is redeclared on line 24
-3a8,9
-> 1
+3a8
 > 10
-12,23c18,29
-< 991
+13,23c18,28
 < 990
 < 2999
 < 2998
@@ -357,7 +356,6 @@
 < 2991
 < 2990
 ---
-> 1
 > 10
 > 8999
 > 8998
@@ -367,8 +365,7 @@
 > 8994
 > 8993
 > 8992
-> 1
+> 8991
 > 10
-32,33d37
-< 8991
+33d37
 < 8990

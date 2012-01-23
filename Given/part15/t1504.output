@@ -31,7 +31,6 @@ executing the a.out
 -2
 1002
 element forward x: a
-1
 10
 101
 102
@@ -41,11 +40,13 @@ element forward x: a
 106
 107
 108
+109
 element forward x: c
--4
-3
-1004
+99
+0
+1
 element reverse x: a
+109
 108
 107
 106
@@ -55,8 +56,7 @@ element reverse x: a
 102
 101
 10
-1
 element reverse x: c
-1004
-3
--4
+1
+0
+99
