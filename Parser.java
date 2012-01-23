@@ -291,7 +291,7 @@ public class Parser {
 
 	private void everyproc() {
 		mustbe(TK.EVERY);
-		gcprint("for(");
+//		gcprint("for(");
 		int index = 0;
 		if (is(TK.INDEX)) {
 			index = 1;
