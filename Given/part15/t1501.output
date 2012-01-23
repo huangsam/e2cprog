@@ -4,7 +4,6 @@ variable x is redeclared on line 34
 variable x is redeclared on line 40
 compiling the C generated code
 executing the a.out
-subscript (53) out of bounds for array a[1:10] on line 24
 1
 101
 2
@@ -32,4 +31,58 @@ subscript (53) out of bounds for array a[1:10] on line 24
 -2
 1002
 index x: a
-53
+1
+101
+2
+102
+3
+103
+4
+104
+5
+105
+6
+106
+7
+107
+8
+108
+9
+109
+10
+110
+index x: c
+-4
+1004
+-3
+1003
+-2
+1002
+index reverse x: a
+10
+110
+9
+109
+8
+108
+7
+107
+6
+106
+5
+105
+4
+104
+3
+103
+2
+102
+1
+101
+index reverse x: c
+-2
+1002
+-3
+1003
+-4
+1004

@@ -116,9 +116,9 @@ x_x
 
 int indexx;
 for(
-indexx=2;indexx=sizeof(
+indexx=0;indexx<=
 x_a
-);indexx++)
+[1]-1;indexx++)
 {
 x_x
  = 
@@ -141,9 +141,9 @@ x_x
 
 int indexx;
 for(
-indexx=2;indexx=sizeof(
+indexx=0;indexx<=
 x_c
-);indexx++)
+[1]-1;indexx++)
 {
 x_x
  = 
@@ -166,9 +166,9 @@ x_x
 
 int indexx;
 for(
-indexx=sizeof(
+indexx=
 x_a
-);indexx>1;indexx--)
+[1]-1;indexx>=0;indexx--)
 {
 x_x
  = 
@@ -191,9 +191,9 @@ x_x
 
 int indexx;
 for(
-indexx=sizeof(
+indexx=
 x_c
-);indexx>1;indexx--)
+[1]-1;indexx>=0;indexx--)
 {
 x_x
  = 

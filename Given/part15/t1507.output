@@ -1,0 +1,3 @@
+running e2c t1507
+variable x is redeclared on line 16
+index variable on left-hand-side of assignment x on line 18

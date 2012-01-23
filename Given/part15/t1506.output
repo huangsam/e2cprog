@@ -1,0 +1,16 @@
+running e2c t1506
+variable x is redeclared on line 16
+compiling the C generated code
+executing the a.out
+element forward x: a
+1
+10
+101
+102
+103
+104
+105
+106
+107
+108
+12

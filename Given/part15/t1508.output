@@ -1,0 +1,19 @@
+running e2c t1508
+compiling the C generated code
+executing the a.out
+element forward x: c
+inloop
+-4
+-4
+3
+1004
+inloop
+3
+-4
+3
+1004
+inloop
+1004
+-4
+3
+1004

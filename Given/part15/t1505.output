@@ -1,0 +1,5 @@
+running e2c t1505
+compiling the C generated code
+t1505.c: In function 'main':
+t1505.c:89:1: error: 'x_x' undeclared (first use in this function)
+t1505.c:89:1: note: each undeclared identifier is reported only once for each function it appears in
