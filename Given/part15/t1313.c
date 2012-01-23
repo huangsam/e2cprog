@@ -2,8 +2,8 @@
 #include <stdlib.h>
 int bc(int *a, int ln, int exp, char arName);
 int everyIndex;
-main() {
-int x_a[] = {
-1, 10, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, }
-;
+main() 
+{
+int 
+x_a[] = {1, 10, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, };
 }

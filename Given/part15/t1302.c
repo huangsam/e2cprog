@@ -2,5 +2,6 @@
 #include <stdlib.h>
 int bc(int *a, int ln, int exp, char arName);
 int everyIndex;
-main() {
+main() 
+{
 int 

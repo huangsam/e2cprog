@@ -75,7 +75,7 @@
 > variable x is redeclared on line 28
 > variable x is redeclared on line 34
 > variable x is redeclared on line 40
-3,85c6,9
+3,85c6,8
 < executing the a.out
 < 1
 < 101
@@ -161,9 +161,8 @@
 < 1004
 ---
 > t1501.c: In function 'main':
-> t1501.c:113:1: error: expected expression before '{' token
-> t1501.c:143:1: error: expected expression before 'for'
-> t1501.c:243:1: error: expected declaration or statement at end of input
+> t1501.c:118:1: error: 'index' undeclared (first use in this function)
+> t1501.c:118:1: note: each undeclared identifier is reported only once for each function it appears in
 ==== t1502 ====
 2,59c2,3
 < compiling the C generated code

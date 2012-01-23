@@ -2,5 +2,8 @@
 #include <stdlib.h>
 int bc(int *a, int ln, int exp, char arName);
 int everyIndex;
-main() {
-int x_a=8888;
+main() 
+{
+int 
+x_a
+=8888;

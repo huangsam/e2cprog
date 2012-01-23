@@ -109,7 +109,6 @@ x_b
 printf(
 "%s\n", "index x: a"
 );
-for(
 {
 int 
 x_x
@@ -140,7 +139,6 @@ x_x
 printf(
 "%s\n", "index x: c"
 );
-for(
 {
 int 
 x_x
@@ -171,7 +169,6 @@ x_x
 printf(
 "%s\n", "index reverse x: a"
 );
-for(
 {
 int 
 x_x
@@ -202,7 +199,6 @@ x_x
 printf(
 "%s\n", "index reverse x: c"
 );
-for(
 {
 int 
 x_x
