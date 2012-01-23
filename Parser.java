@@ -351,7 +351,7 @@ public class Parser {
 			gcprintid(arrayTok.string);
 			gcprint("["+cindexName+"+");
 			gcprintid(arrayTok.string);
-			gcprint("[0];");
+			gcprint("[0]];");
 		}
 			
 			
