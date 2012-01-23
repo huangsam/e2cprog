@@ -69,7 +69,7 @@ public class Parser {
 		gcprint("int bc(char *arrayName, int *array, int index, int lno) {");
 		gcprint("int curSize = array[1];");
 		gcprint("int ub = array[1] + array[0] - 1;");
-		gcprint("if(index < 0 || index > ub) {");
+		gcprint("if(index < array[0] || index > ub) {");
 		gcprint("fprintf(stderr,\"subscript (%d) out of bounds for "
 				+ "array %s[%d:%d] on line %d\",");
 		gcprint("index,");
