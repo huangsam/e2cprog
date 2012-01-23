@@ -5,7 +5,11 @@ int bc(int *a, int ln, int exp, char arName);
 main() {
 	int x_a[] = {1, 10, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, 4444, };
 	{
+	int l = 30;
+	printf("%d\n", l);
 	}	
+	printf("%d\n", l);
+	
 	int x_b =8888;
 	int x_e=8888;
 	int x_c[] = {-4, 3, 4444, 4444, 4444, 4444, };
