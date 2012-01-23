@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp -f *.java ../Given/part1${1}/
+cd ../Given/part1${1}
+make remake 
+runall > log.txt
+more +150 log.txt

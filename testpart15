@@ -1,6 +1,0 @@
-
-cp -f *.java ../Given/part14/
-cd ../Given/part14
-make remake 
-runall > log.txt
-more +150 log.txt
