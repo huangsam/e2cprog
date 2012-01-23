@@ -19,6 +19,7 @@ public class Parser {
 	TK f_for[] = { TK.FOR, TK.none };
 	TK f_repeat[] = { TK.REPEAT, TK.UNTIL, TK.none };
 	TK f_expression[] = { TK.ID, TK.NUM, TK.LPAREN, TK.none };
+	TK f_every[] = { TK.EVERY, TK.none };
 
 	// tok is global to all these parsing methods;
 	// scan just calls the scanner's scan method and saves the result in tok.
@@ -215,13 +216,36 @@ public class Parser {
 			forproc();
 		else if (first(f_repeat))
 			repeatproc();
+		else if (first(f_every))
+			everyproc();
 		else
 			parse_error("oops -- statement bad first");
 	}
 	
 	private void everyproc() {
+		mustbe(TK.EVERY)
+		int index = 0;
+		if (is(TK.INDEX)) {
+			index = 1;
+			mustbe(TK.INDEX);
+		}
+		int reverse = 0;
+		if (is(TK.REVERSE)) {
+			reverse = 1;
+			mustbe(TK.REVERSE);
+		}
+		Token tTok = tok;
+		mustbe(TK.ID);
+		mustbe(TK.COLON);
+		Token arrayTok = tok;
+		mustbe(TK.ID);
+		mustbe(TK.DO);
 		
+		
+		block();
+		mustbe(TK.END);
 	}
+	
 		
 
 	private void assignment() {
