@@ -290,16 +290,20 @@ public class Parser {
 	}
 
 	private void everyproc() {
-		mustbe(TK.EVERY);
-//		gcprint("for(");
-		int index = 0;
-		if (is(TK.INDEX)) {
-			index = 1;
+		mustbe(TK.EVERY)
+		
+		if(is(TK.ELEMENT)) {
+			int index = 0;
+			mustbe(TK.ELEMENT);
+		} else if (is(TK.INDEX)) {
+			int index = 1;
 			mustbe(TK.INDEX);
-		}
-		int reverse = 0;
-		if (is(TK.REVERSE)) {
-			reverse = 1;
+		} 
+		if(is(TK.FORWARD)) {
+			int reverse = 0;
+			mustbe(TK.FORWARD);
+		} else if (is(TK.REVERSE)) {
+			int reverse = 1;
 			mustbe(TK.REVERSE);
 		}
 		Token indexTok = tok;
