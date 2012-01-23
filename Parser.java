@@ -344,7 +344,7 @@ public class Parser {
 		gcprintid(indexName);
 		gcprint(" = ");
 		if (index==1) {
-			gcprint(cindexName+"+");
+			gcprint(cindexName+"-2+");
 			gcprintid(arrayTok.string);
 			gcprint("[0];");
 		} else {
