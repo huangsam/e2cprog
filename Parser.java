@@ -333,7 +333,7 @@ public class Parser {
 		if(reverse==1){
 			gcprint(cindexName+"=sizeof(");
 			gcprintid(arrayTok.string);
-			gcprint(");"+cindexName+">1;"+cindexName+"--)");
+			gcprint(")-1;"+cindexName+">1;"+cindexName+"--)");
 		} else {
 			gcprint(cindexName+"=2;"+cindexName+"<sizeof(");
 			gcprintid(arrayTok.string);
