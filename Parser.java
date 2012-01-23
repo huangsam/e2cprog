@@ -89,6 +89,7 @@ public class Parser {
 	private void program() {
 		gcprint("#include <stdio.h>");
 		gcprint("#include <stdlib.h>\n"); // part 14
+// 		gcprint("int bcCheck;\n");
 		bc(); // part 14
 		gcprint("main() ");
 		block();
@@ -455,15 +456,27 @@ public class Parser {
 			System.exit(1);
 		}
 		if (e.getIsArray()) {
+			int lineN = tok.lineNumber;
 			scan();
 			if (!is(TK.LBRACKET)) {
 				System.err.println("missing subscript for array " + id
 						+ " on line " + lno);
 				System.exit(1);
 			}
-			scan();
-			gcprintid(id + "[");
+			mustbe(TK.LBRACKET);
+			// 			scan();
+			/* part 14 */
+			// if id is unique then the line below is unique too.
+			gcprint( id +"bcCheck ="); 
 			expression();
+			
+			gcprint(id+"name = " +id);
+			gcprint( "bc(\""+id+"\"," ); 
+			gcprintid(id);
+			gcprint(","+id+"bcCheck"+ "," + lineN + ");");
+			
+			gcprintid(id + "[");
+			gcprint(id +"bcCheck"); // already boundchecked
 			gcprint("-x_" + id + "[0]+2]");
 			return e;
 		}
@@ -484,9 +497,20 @@ public class Parser {
 						+ " on line " + lno);
 				System.exit(1);
 			}
-			scan();
-			gcprintid(id + "[");
+			mustbe(TK.LBRACKET);
+			// 			scan();
+			/* part 14 */
+			// if id is unique then the line below is unique too.
+			gcprint( id +"bcCheck ="); 
 			expression();
+			
+			gcprint(id+"name = " +id);
+			gcprint( "bc(\""+id+"\"," ); 
+			gcprintid(id);
+			gcprint(","+id+"bcCheck"+ "," + lineN + ");");
+			
+			gcprintid(id + "[");
+			gcprint(id +"bcCheck"); // already boundchecked
 			gcprint("-x_" + id + "[0]+2]");
 			return;
 		}
