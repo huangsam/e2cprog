@@ -343,9 +343,9 @@ public class Parser {
 
 			 */
 			
-			gcprint(cindexName+"=");
+			gcprint(cindexName+"=(");
 			gcprintid(arrayTok.string);
-			gcprint("[1]-1;"+cindexName+">=0;"+cindexName+"--)");
+			gcprint("[1]-1);"+cindexName+">=0;"+cindexName+"--)");
 		} else {
 			/* 
 			 * for a forward for loop the c bounds are:
@@ -375,7 +375,7 @@ public class Parser {
 			gcprint("[0];");
 		} else {
 			gcprintid(arrayTok.string);
-			gcprint("["+cindexName+"+");
+			gcprint("["+cindexName+"-");
 			gcprintid(arrayTok.string);
 			gcprint("[0]+1];");
 		}
