@@ -86,16 +86,3 @@ x_x
 	}
 }
 printf("%d\n", 
-x_x
-);
-}
-int bc(int *a, int ln, int exp, char arName)
-{
-int subscript = exp - a[0] + 2;
-if( subscript < a[1] + 2 && subscript >= 2 )
-return subscript;
-fprintf(stderr, "subscript (%d) out of bounds for array ", exp );
-fprintf(stderr, "%c[%d:%d] on line %d\n",arName,a[0],a[0]+a[1]-1,ln );
-exit(1);
-return 0;
-}

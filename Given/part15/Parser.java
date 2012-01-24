@@ -313,13 +313,21 @@ public class Parser {
 		Token arrayTok = tok;
 		mustbe(TK.ID);
 		mustbe(TK.DO);
+		Entry arrayEntry = symtab.search(arrayTok.string);
+		if (!arrayEntry.getIsArray()) {
+			System.err.println("can't parse: line " + arrayTok.lineNumber +" right-hand-side of : in every isn't array "
+								+ arrayEntry.getName() );
+			System.exit(1);
+		}
 		gcprint("{");
 		gcprint("int ");
 		String indexName = indexTok.string;//+arrayTok.string ;
 		gcprintid(indexName);
 		gcprint(";\n");
 		
+		symtab.begin_st_block();
 		symtab.add_entry(indexName, indexTok.lineNumber, TK.VAR);
+		
 		Entry iv = symtab.search(indexName);
 		iv.setIsIV( true );
 //		symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)
@@ -386,6 +394,7 @@ public class Parser {
 		block();
 		mustbe(TK.END);
 		gcprint("	}");
+		symtab.end_st_block();
 		gcprint("}");
 	}
 

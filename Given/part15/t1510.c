@@ -17,26 +17,3 @@ x_c[] = {-4, 3, 4444, 4444, 4444, 4444, };
 printf(
 "%s\n", "forward x: e"
 );
-{
-int 
-x_x
-;
-
-int indexx;
-for(
-indexx=0;indexx<
-x_e
-[1];indexx++)
-{
-x_x
- = 
-x_e
-[indexx+2];
-{
-printf("%d\n", 
-x_x
-);
-}
-	}
-}
-}

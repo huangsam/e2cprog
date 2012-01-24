@@ -1,8 +1,4 @@
 running e2c t1509
-variable x is redeclared on line 20
-variable x is redeclared on line 27
-variable x is redeclared on line 34
-variable y is redeclared on line 41
 compiling the C generated code
 executing the a.out
 forward x: a

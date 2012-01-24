@@ -71,57 +71,13 @@
 ==== t1404 ====
 ==== t1405 ====
 ==== t1501 ====
-1a2,4
-> variable x is redeclared on line 28
-> variable x is redeclared on line 34
-> variable x is redeclared on line 40
 ==== t1502 ====
-1a2,4
-> variable x is redeclared on line 27
-> variable x is redeclared on line 32
-> variable x is redeclared on line 37
 ==== t1503 ====
-1a2,4
-> variable x is redeclared on line 27
-> variable x is redeclared on line 32
-> variable x is redeclared on line 37
 ==== t1504 ====
-1a2,4
-> variable x is redeclared on line 27
-> variable x is redeclared on line 32
-> variable x is redeclared on line 37
 ==== t1505 ====
-2c2,5
-< undeclared variable x on line 18
----
-> compiling the C generated code
-> t1505.c: In function 'main':
-> t1505.c:89:1: error: 'x_x' undeclared (first use in this function)
-> t1505.c:89:1: note: each undeclared identifier is reported only once for each function it appears in
 ==== t1506 ====
-1a2
-> variable x is redeclared on line 16
 ==== t1507 ====
-1a2
-> variable x is redeclared on line 16
 ==== t1508 ====
 ==== t1509 ====
-1a2,5
-> variable x is redeclared on line 20
-> variable x is redeclared on line 27
-> variable x is redeclared on line 34
-> variable y is redeclared on line 41
 ==== t1510 ====
-2c2,5
-< can't parse: line 4 right-hand-side of : in every isn't array e
----
-> compiling the C generated code
-> t1510.c: In function 'main':
-> t1510.c:29:1: error: subscripted value is neither array nor pointer nor vector
-> t1510.c:34:1: error: subscripted value is neither array nor pointer nor vector
 ==== t1511 ====
-1a2,5
-> variable x is redeclared on line 7
-> variable x is redeclared on line 12
-> variable x is redeclared on line 18
-> variable x is redeclared on line 24

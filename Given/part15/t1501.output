@@ -1,7 +1,4 @@
 running e2c t1501
-variable x is redeclared on line 28
-variable x is redeclared on line 34
-variable x is redeclared on line 40
 compiling the C generated code
 executing the a.out
 1
