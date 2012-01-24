@@ -315,7 +315,7 @@ public class Parser {
 		mustbe(TK.DO);
 		Entry arrayEntry = symtab.search(arrayTok.string);
 		if (!arrayEntry.getIsArray()) {
-			System.err.println("can't parse: line " + tok.lineNumber +" right-hand-side of : in every isn't array: "
+			System.err.println("can't parse: line " + arrayTok.lineNumber +" right-hand-side of : in every isn't array: "
 								+ arrayEntry.getName() );
 			System.exit(1);
 		}
