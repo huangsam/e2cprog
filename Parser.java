@@ -319,7 +319,9 @@ public class Parser {
 		gcprintid(indexName);
 		gcprint(";\n");
 		
+		symtab.begin_st_block();
 		symtab.add_entry(indexName, indexTok.lineNumber, TK.VAR);
+		
 		Entry iv = symtab.search(indexName);
 		iv.setIsIV( true );
 //		symtab.add_entry(tok.string, tok.lineNumber, TK.VAR)
@@ -386,6 +388,7 @@ public class Parser {
 		block();
 		mustbe(TK.END);
 		gcprint("	}");
+		symtab.end_st_block();
 		gcprint("}");
 	}
 
