@@ -2,4 +2,4 @@ running e2c t1510
 compiling the C generated code
 t1510.c: In function 'main':
 t1510.c:29:1: error: subscripted value is neither array nor pointer nor vector
-t1510.c:36:1: error: subscripted value is neither array nor pointer nor vector
+t1510.c:34:1: error: subscripted value is neither array nor pointer nor vector

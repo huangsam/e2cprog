@@ -70,16 +70,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_c
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_c
-[indexx+
-x_c
-[0]];
+[indexx+2];
 {
 printf(
 "%s\n", "inloop"
@@ -94,16 +92,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_c
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_c
-[indexx+
-x_c
-[0]];
+[indexx+2];
 {
 printf("%d\n", 
 x_x

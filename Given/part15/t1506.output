@@ -3,7 +3,6 @@ variable x is redeclared on line 16
 compiling the C generated code
 executing the a.out
 element forward x: a
-10
 101
 102
 103
@@ -13,4 +12,5 @@ element forward x: a
 107
 108
 109
+110
 12

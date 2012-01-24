@@ -69,16 +69,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_a
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_a
-[indexx+
-x_a
-[0]];
+[indexx+2];
 {
 int 
 x_a
@@ -106,16 +104,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_c
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_c
-[indexx+
-x_c
-[0]];
+[indexx+2];
 {
 int 
 x_c[] = {22, 4, 4444, 4444, 4444, 4444, 4444, };
@@ -134,9 +130,9 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_c
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
@@ -162,16 +158,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_c
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_c
-[indexx+
-x_c
-[0]];
+[indexx+2];
 {
 printf("%d\n", 
 x_x
@@ -195,16 +189,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_c
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_c
-[indexx+
-x_c
-[0]];
+[indexx+2];
 {
 int 
 x_c[] = {22, 4, 4444, 4444, 4444, 4444, 4444, };
@@ -223,9 +215,9 @@ x_y
 
 int indexy;
 for(
-indexy=0;indexy<=
+indexy=0;indexy<
 x_c
-[1]-1;indexy++)
+[1];indexy++)
 {
 x_y
  = 
@@ -251,16 +243,14 @@ x_y
 
 int indexy;
 for(
-indexy=0;indexy<=
+indexy=0;indexy<
 x_c
-[1]-1;indexy++)
+[1];indexy++)
 {
 x_y
  = 
 x_c
-[indexy+
-x_c
-[0]];
+[indexy+2];
 {
 printf("%d\n", 
 x_y
@@ -272,9 +262,9 @@ x_y
 
 int indexy;
 for(
-indexy=0;indexy<=
+indexy=0;indexy<
 x_e
-[1]-1;indexy++)
+[1];indexy++)
 {
 x_y
  = 

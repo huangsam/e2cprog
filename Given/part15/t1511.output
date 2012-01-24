@@ -5,7 +5,6 @@ variable x is redeclared on line 18
 variable x is redeclared on line 24
 compiling the C generated code
 executing the a.out
-10
 999
 998
 997
@@ -15,7 +14,17 @@ executing the a.out
 993
 992
 991
-10
+990
+2999
+2998
+2997
+2996
+2995
+2994
+2993
+2992
+2991
+2990
 8999
 8998
 8997
@@ -25,13 +34,4 @@ executing the a.out
 8993
 8992
 8991
-10
-8999
-8998
-8997
-8996
-8995
-8994
-8993
-8992
-8991
+8990

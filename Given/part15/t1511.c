@@ -18,9 +18,9 @@ x_x
 
 int indexx;
 for(
-indexx=
+indexx=(
 x_a
-[1]-1;indexx>=0;indexx--)
+[1]-1);indexx>=0;indexx--)
 {
 x_x
  = 
@@ -46,16 +46,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_a
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_a
-[indexx+
-x_a
-[0]];
+[indexx+2];
 {
 printf("%d\n", 
 x_x
@@ -76,9 +74,9 @@ x_x
 
 int indexx;
 for(
-indexx=
+indexx=(
 x_b
-[1]-1;indexx>=0;indexx--)
+[1]-1);indexx>=0;indexx--)
 {
 x_x
  = 
@@ -108,16 +106,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_b
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_b
-[indexx+
-x_b
-[0]];
+[indexx+2];
 {
 x_k
 =
@@ -146,16 +142,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_b
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_b
-[indexx+
-x_b
-[0]];
+[indexx+2];
 {
 printf("%d\n", 
 x_x

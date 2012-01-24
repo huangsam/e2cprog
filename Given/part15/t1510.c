@@ -24,16 +24,14 @@ x_x
 
 int indexx;
 for(
-indexx=0;indexx<=
+indexx=0;indexx<
 x_e
-[1]-1;indexx++)
+[1];indexx++)
 {
 x_x
  = 
 x_e
-[indexx+
-x_e
-[0]];
+[indexx+2];
 {
 printf("%d\n", 
 x_x
