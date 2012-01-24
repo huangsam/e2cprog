@@ -316,7 +316,7 @@ public class Parser {
 		Entry arrayEntry = symtab.search(arrayTok.string);
 		if (arrayEntry.getIsArray()) {
 			System.err.println("can't parse: line " + tok.lineNumber +" right-hand-side of : in every isn't array"
-								+ arrayEntry.name );
+								+ arrayEntry.getName() );
 			System.exit(1);
 		}
 		gcprint("{");
