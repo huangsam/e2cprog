@@ -331,27 +331,53 @@ public class Parser {
 		
 		gcprint("for(");
 		if(reverse==1){
+			/*
+			 * 	for a reversed for loop the c bounds are 
+				from j = a[1]-1; 
+				to j >= 0;
+				j--
+				the e bounds are:
+				from e = j +a[0]
+				to e = j +a[0]
+				e = a[1]f +a[0] 
+
+			 */
+			
 			gcprint(cindexName+"=");
 			gcprintid(arrayTok.string);
 			gcprint("[1]-1;"+cindexName+">=0;"+cindexName+"--)");
 		} else {
-			gcprint(cindexName+"=0;"+cindexName+"<=");
+			/* 
+			 * for a forward for loop the c bounds are:
+			 * from j = 0
+			 * to j < a[1]
+			 * j++
+			 * the e bounds are:
+			 * from e = j+a[0]
+			 */
+			gcprint(cindexName+"=0;"+cindexName+"<");
 			gcprintid(arrayTok.string);
-			gcprint("[1]-1;"+cindexName+"++)");
+			gcprint("[1];"+cindexName+"++)");
 		}
 		gcprint("{");
 		
 		gcprintid(indexName);
 		gcprint(" = ");
 		if (index==1) {
+			/*
+			 * if in c index = 0
+			 * then e index = a[0]
+			 * if in c index = size 
+			 * then e index = a[1]
+			 */
 			gcprint(cindexName+"+");
 			gcprintid(arrayTok.string);
-			gcprint("[0];");
+			gcprint("[0]+2;");
 		} else {
 			gcprintid(arrayTok.string);
 			gcprint("["+cindexName+"+");
 			gcprintid(arrayTok.string);
-			gcprint("[0]];");
+			gcprint("[0]+2];");
 		}
 			
 			
